@@ -1,0 +1,9 @@
+# Local tooling and docs — deliberately kept out of the public repo.
+# These files still live in this folder on your Mac.
+README.md
+build-standalone.py
+make-og-image.html
+portfolio-standalone.html
+portfolio-artifact.html
+
+.DS_Store

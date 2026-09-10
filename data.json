@@ -1,0 +1,628 @@
+{
+  "site": {
+    "name": "Piyush Selarka",
+    "title": "Piyush Selarka — Senior iOS Developer | ARKit & Flutter",
+    "description": "Piyush Selarka — Senior iOS Developer with 8+ years across Swift, SwiftUI, ARKit and Flutter, shipping 30+ App Store products.",
+    "logo": "PIYUSH&nbsp;SELARKA",
+    "resumeFile": "Piyush_Selarka_Resume.pdf"
+  },
+  "nav": {
+    "links": [
+      {
+        "label": "Services",
+        "href": "#services"
+      },
+      {
+        "label": "Skills",
+        "href": "#skills"
+      },
+      {
+        "label": "Experience",
+        "href": "#experience"
+      },
+      {
+        "label": "Projects",
+        "href": "#projects"
+      },
+      {
+        "label": "Apps",
+        "href": "#apps"
+      },
+      {
+        "label": "Process",
+        "href": "#process"
+      },
+      {
+        "label": "FAQ",
+        "href": "#faq"
+      }
+    ],
+    "cta": {
+      "label": "Get In Touch",
+      "href": "#contact"
+    }
+  },
+  "hero": {
+    "status": "AVAILABLE FOR CONTRACT & FULL-TIME · FROM OCT 2026",
+    "eyebrow": "Senior iOS Developer · ARKit & Flutter · Taking clients directly",
+    "headlinePre": "Piyush Selarka ships the ",
+    "headlineAccent": "native iOS layer",
+    "headlinePost": " that millions of people open every day.",
+    "lede": "<strong>8+ years delivering mobile products for international clients</strong> in Swift, SwiftUI, UIKit and Objective-C — with ARKit and SceneKit for 3D, Flutter for cross-platform delivery, and a Fastlane-driven release pipeline behind <strong>30+ App Store launches</strong>.",
+    "ctas": [
+      {
+        "label": "View Projects →",
+        "href": "#projects",
+        "type": "primary",
+        "download": false
+      },
+      {
+        "label": "Download Resume",
+        "href": "Piyush_Selarka_Resume.pdf",
+        "type": "ghost",
+        "download": true
+      }
+    ],
+    "stats": [
+      {
+        "num": "8+",
+        "label": "Years in iOS"
+      },
+      {
+        "num": "30+",
+        "label": "Apps Shipped"
+      },
+      {
+        "num": "5M+",
+        "label": "Installs Reached"
+      },
+      {
+        "num": "6",
+        "label": "Domains Covered"
+      }
+    ],
+    "deviceTags": [
+      "SWIFTUI",
+      "SCENEKIT",
+      "FLUTTER"
+    ],
+    "sessionLabel": "ARKIT",
+    "sessionId": "/ SESSION_01",
+    "sessionStatus": "TRACKING NORMAL · 60 FPS"
+  },
+  "track": {
+    "badge": "FLAGSHIP",
+    "title": "Bhoj / Bhojdeals — Nepal",
+    "sub": "Food &amp; grocery delivery · figures per MindInventory's published case study",
+    "stats": [
+      {
+        "num": "5M+",
+        "label": "APP STORE DOWNLOADS"
+      },
+      {
+        "num": "1M+",
+        "label": "PLAY STORE INSTALLS"
+      },
+      {
+        "num": "2M+",
+        "label": "NEW USERS"
+      },
+      {
+        "num": "4",
+        "label": "CORE MODULES OWNED"
+      }
+    ],
+    "linkLabel": "",
+    "linkUrl": ""
+  },
+  "services": {
+    "sectionEyebrow": "Services",
+    "sectionTitle": "How I can help",
+    "sectionIntro": "Available for contract work from October 2026, and open to senior iOS roles. Eight years of that delivery has been for international clients through an agency — the same work, now direct.",
+    "items": [
+      {
+        "title": "Fixed-Price Projects",
+        "desc": "An app or a defined feature set, built to an agreed scope and price. Architecture, build, QA and App Store submission handled end to end.",
+        "chips": [
+          "Agreed scope",
+          "Fixed price",
+          "Store submission"
+        ],
+        "icon": "brief"
+      },
+      {
+        "title": "Contract & Team Augmentation",
+        "desc": "Join your team hourly or monthly as a senior iOS engineer — sprints, code review and releases alongside your existing developers.",
+        "chips": [
+          "Hourly / monthly",
+          "Agile sprints",
+          "Code review"
+        ],
+        "icon": "timer"
+      },
+      {
+        "title": "App Store Rescue & Release",
+        "desc": "Submission rejected, release stuck, or the app slow and crashing? Short engagements to unblock it — App Review compliance, Instruments profiling, Fastlane pipelines.",
+        "chips": [
+          "Rejected builds",
+          "Instruments",
+          "CI/CD setup"
+        ],
+        "icon": "shield"
+      },
+      {
+        "title": "ARKit & 3D Specialist Work",
+        "desc": "Augmented reality and 3D features for existing apps — face tracking and try-on, product visualisation, plane detection and SceneKit model work.",
+        "chips": [
+          "ARKit",
+          "SceneKit",
+          "Face tracking",
+          "3D models"
+        ],
+        "icon": "cube"
+      }
+    ],
+    "note": "<strong>Rates on request</strong> — they depend on scope and engagement length. Every project starts with a short call to pin down requirements and feasibility, followed by a written scope and estimate before any work begins."
+  },
+  "skills": {
+    "sectionEyebrow": "Technical Skills",
+    "sectionTitle": "Depth in native iOS, reach across platforms",
+    "sectionIntro": "Swift and SwiftUI at the core, ARKit and CoreML for spatial and on-device intelligence, Flutter where a shared codebase earns its place — and the platform, testing and release tooling that gets all of it past App Review.",
+    "categories": [
+      {
+        "idx": "01",
+        "title": "Languages & UI",
+        "items": [
+          "Swift",
+          "SwiftUI",
+          "UIKit",
+          "Objective-C",
+          "Flutter & Dart"
+        ]
+      },
+      {
+        "idx": "02",
+        "title": "Architecture & Data",
+        "items": [
+          "MVVM · Clean Architecture",
+          "Dependency Injection",
+          "Swift Concurrency (async/await)",
+          "CoreData · SQLite",
+          "Keychain"
+        ]
+      },
+      {
+        "idx": "03",
+        "title": "AR, ML & Networking",
+        "items": [
+          "ARKit · SceneKit",
+          "CoreML · Vision",
+          "MapKit",
+          "REST APIs & GraphQL",
+          "URLSession · Alamofire"
+        ]
+      },
+      {
+        "idx": "04",
+        "title": "Platform, Delivery & Ops",
+        "items": [
+          "Firebase · Push Notifications",
+          "CocoaPods · Swift Package Manager",
+          "Fastlane · CI/CD · App Store Connect",
+          "XCTest · Instruments profiling",
+          "Git · Code review · Agile/Scrum"
+        ]
+      }
+    ],
+    "expertise": [
+      {
+        "name": "Swift · SwiftUI · UIKit",
+        "pct": 96,
+        "sub": "8+ years · 30+ shipped App Store products"
+      },
+      {
+        "name": "iOS Architecture & Performance",
+        "pct": 92,
+        "sub": "MVVM · Clean Architecture · Instruments profiling"
+      },
+      {
+        "name": "API & Backend Integration",
+        "pct": 90,
+        "sub": "REST · GraphQL · Firebase · payments & wallets"
+      },
+      {
+        "name": "Release Engineering & Mentoring",
+        "pct": 90,
+        "sub": "Fastlane · App Store Connect · code review"
+      },
+      {
+        "name": "ARKit · SceneKit · CoreML",
+        "pct": 86,
+        "sub": "3D visualisation · Vision · open-source AR samples"
+      },
+      {
+        "name": "Flutter & Dart",
+        "pct": 84,
+        "sub": "CollabCRM · 2 cross-platform apps delivered end to end"
+      }
+    ],
+    "expertiseNote": "Proficiency levels are self-assessed."
+  },
+  "experience": {
+    "sectionEyebrow": "Experience",
+    "sectionTitle": "Where I've built",
+    "sectionIntro": "From junior developer to senior iOS engineer leading releases and mentoring the bench, across gaming, food delivery, healthcare, CRM and education.",
+    "items": [
+      {
+        "role": "Senior iOS Developer",
+        "date": "JUL 2018 — OCT 2026",
+        "org": "MindInventory Pvt. Ltd., Ahmedabad",
+        "desc": "Deliver and maintain large-scale iOS applications for international clients across gaming, food delivery, CRM, healthcare and education — integrating payments, wallets, push notifications, analytics, maps and third-party SDKs. Profile and optimise performance with Instruments, run code reviews, mentor junior iOS developers, and ship through Fastlane-driven CI/CD in an Agile/Scrum team. Also delivered two cross-platform Flutter applications alongside the native work, including CollabCRM, a business operating system for IT companies.",
+        "tags": [
+          "Swift & SwiftUI",
+          "Objective-C",
+          "Fastlane CI/CD",
+          "Instruments",
+          "Flutter",
+          "Mentoring"
+        ],
+        "type": "work"
+      },
+      {
+        "role": "iOS Developer",
+        "date": "FEB 2018 — MAY 2018",
+        "org": "Incipient Info",
+        "desc": "Developed the SteelBuddy B2B marketplace application — quotation flows, buyer/seller inquiries, in-app chat and push notifications.",
+        "tags": [
+          "UIKit",
+          "Marketplace",
+          "Chat",
+          "Push Notifications"
+        ],
+        "type": "work"
+      },
+      {
+        "role": "Junior iOS Developer",
+        "date": "FEB 2017 — FEB 2018",
+        "org": "Techrevere Solutions",
+        "desc": "Built features for The Morning Kitchen and CoalShastra under senior leads — the first two production iOS codebases I shipped against.",
+        "tags": [
+          "Objective-C",
+          "UIKit",
+          "REST APIs"
+        ],
+        "type": "work"
+      },
+      {
+        "role": "Bachelor of Computer Applications (BCA)",
+        "date": "GRADUATED",
+        "org": "Saurashtra University",
+        "desc": "",
+        "tags": [],
+        "type": "education"
+      }
+    ]
+  },
+  "projects": {
+    "sectionEyebrow": "Selected Projects",
+    "sectionTitle": "Products I've owned features on",
+    "sectionIntro": "Cross-platform product work in Flutter, 3D character work on a live App Store title, consumer scale in food delivery and real-time gaming, plus augmented reality — drawn from 30+ iOS applications shipped through App Review. Select any card for the full detail.",
+    "moreLinkLabel": "Ask about any project in detail →",
+    "moreLinkUrl": "mailto:selarka.pish@gmail.com",
+    "items": [
+      {
+        "id": "collabcrm",
+        "title": "CollabCRM",
+        "category": "Flutter · Cross-Platform Business OS",
+        "role": "Flutter Developer — MindInventory",
+        "description": "Contributed to the development and enhancement of CollabCRM, a business operating system built for IT companies — covering CRM, project management, recruitment, invoicing, payroll and people management modules. Developed and maintained Flutter-based cross-platform features, API integrations and scalable UI components, working with product, design and backend teams to deliver production-ready releases and improve the user experience.",
+        "tags": [
+          "Flutter",
+          "Dart",
+          "REST APIs",
+          "Cross-Platform"
+        ],
+        "icon": "grid",
+        "video": ""
+      },
+      {
+        "id": "spark",
+        "title": "Spark: AI Friends for Kids",
+        "category": "iOS · 3D Characters · Education",
+        "role": "3D Model & Character Work",
+        "description": "An AI companion app for children by CuriosityLabs, where kids hold real voice conversations with animated AI friends, build stories and play learning games rather than scroll video. Contributed the 3D character model work behind the on-screen companions. Rated 4.6 from 750+ App Store ratings and actively updated.",
+        "tags": [
+          "3D Models",
+          "SceneKit",
+          "iOS",
+          "Education"
+        ],
+        "icon": "person",
+        "video": "",
+        "link": "https://apps.apple.com/us/app/spark-ai-friends-for-kids/id6470493763",
+        "linkLabel": "View on the App Store ↗"
+      },
+      {
+        "id": "bhoj",
+        "title": "Bhoj / Bhojdeals",
+        "category": "Food Delivery Platform · Nepal",
+        "role": "Senior iOS Developer — MindInventory",
+        "description": "Developed and maintained food delivery, wallet, payment, restaurant discovery and order management features for a leading Nepal-based food delivery platform. Integrated maps, notifications, payment workflows and REST APIs to support end-to-end ordering experiences, contributing to a platform serving a large food delivery ecosystem with restaurant discovery, reviews, wallet credits and online ordering.",
+        "tags": [
+          "Swift",
+          "Payments & Wallet",
+          "MapKit",
+          "REST APIs"
+        ],
+        "icon": "bag",
+        "video": ""
+      },
+      {
+        "id": "drawnguess",
+        "title": "Draw N Guess Multiplayer",
+        "category": "Gaming · Real-time Multiplayer",
+        "role": "Senior iOS Developer — MindInventory",
+        "description": "Built multiplayer game experiences and real-time user interactions — developing gameplay features, user engagement flows and production-quality App Store releases.",
+        "tags": [
+          "Swift",
+          "Real-time Sync",
+          "Gameplay",
+          "App Store"
+        ],
+        "icon": "brush",
+        "video": ""
+      },
+      {
+        "id": "portfolio30",
+        "title": "30+ Shipped iOS Applications",
+        "category": "CRM · Healthcare · Education · Entertainment",
+        "role": "iOS Developer — across all roles",
+        "description": "Delivered applications across CRM, healthcare, education and entertainment domains — including CRM Sales Pipeline, Nutristar, Virtual Piano+ and Math Flash Cards. Implemented scalable architectures, API integrations, local storage, analytics and App Store deployment workflows across 30+ iOS applications taken through App Review.",
+        "tags": [
+          "Swift",
+          "Clean Architecture",
+          "Analytics",
+          "App Store"
+        ],
+        "icon": "cards",
+        "video": ""
+      },
+      {
+        "id": "miarkit",
+        "title": "MIARKitExamples",
+        "category": "ARKit · Face Tracking & AR Try-On",
+        "role": "ARKit Developer — MindInventory",
+        "description": "An open-source ARKit sample project demonstrating real-time face tracking and virtual try-on — anchoring glasses, eye lenses, lipstick and a moustache to a tracked face mesh so the effects hold as the head moves. Published as a reference implementation for developers building face-based AR on iOS.",
+        "tags": [
+          "ARKit",
+          "Face Tracking",
+          "AR Try-On",
+          "Open Source"
+        ],
+        "icon": "cube",
+        "link": "https://github.com/PishSelarka/MIARKitExamples",
+        "linkLabel": "View on GitHub ↗",
+        "video": ""
+      },
+      {
+        "id": "arcarrims",
+        "title": "ARCarRims",
+        "category": "Augmented Reality · Product Visualisation",
+        "role": "ARKit Developer — MindInventory",
+        "description": "An augmented reality project for visualising 3D car rims in the real world — anchoring accurately scaled wheel models to a detected surface so a buyer can preview fitment and finish before purchase.",
+        "tags": [
+          "ARKit",
+          "SceneKit",
+          "3D Models",
+          "Product AR"
+        ],
+        "icon": "target",
+        "link": "https://github.com/PishSelarka/ARCarRims",
+        "linkLabel": "View on GitHub ↗",
+        "video": ""
+      }
+    ]
+  },
+  "apps": {
+    "sectionEyebrow": "Also Shipped",
+    "sectionTitle": "Further App Store titles",
+    "sectionIntro": "A selection of the individual titles delivered across healthcare, education, utilities and casual gaming — part of the 30+ applications shipped through App Review.",
+    "items": [
+      {
+        "title": "Nutristar",
+        "genre": "Healthcare / Nutrition",
+        "icon": "heart",
+        "rating": null,
+        "url": ""
+      },
+      {
+        "title": "The Morning Kitchen",
+        "genre": "Food / Lifestyle",
+        "icon": "bag",
+        "rating": null,
+        "url": ""
+      },
+      {
+        "title": "CoalShastra",
+        "genre": "Commodity Trading",
+        "icon": "grid",
+        "rating": null,
+        "url": ""
+      },
+      {
+        "title": "Math Flash Cards",
+        "genre": "Education / Kids",
+        "icon": "cards",
+        "rating": null,
+        "url": ""
+      },
+      {
+        "title": "Virtual Piano+",
+        "genre": "Music / Utility",
+        "icon": "piano",
+        "rating": null,
+        "url": ""
+      },
+      {
+        "title": "Spin Wheel",
+        "genre": "Casual / Utility",
+        "icon": "wheel",
+        "rating": null,
+        "url": ""
+      },
+      {
+        "title": "5 Second Rule",
+        "genre": "Party / Casual Game",
+        "icon": "timer",
+        "rating": null,
+        "url": ""
+      },
+      {
+        "title": "Guess The Person",
+        "genre": "Trivia / Casual Game",
+        "icon": "person",
+        "rating": null,
+        "url": ""
+      }
+    ],
+    "devLinkLabel": "Request the complete app list with App Store links →",
+    "devLinkUrl": "mailto:selarka.pish@gmail.com"
+  },
+  "process": {
+    "sectionEyebrow": "How I Work",
+    "sectionTitle": "From requirement to App Store release",
+    "sectionIntro": "The same four stages behind 30+ approved submissions.",
+    "steps": [
+      {
+        "num": "01 / SCOPE",
+        "title": "Requirements & Architecture",
+        "desc": "Work through requirements with the client or product owner, then choose the architecture — MVVM or Clean, module boundaries, and the data layer — before a screen gets built.",
+        "chips": [
+          "Requirements",
+          "Architecture",
+          "Estimates"
+        ]
+      },
+      {
+        "num": "02 / BUILD",
+        "title": "Feature Delivery in Sprints",
+        "desc": "Ship features sprint by sprint with dependency injection and testable layers, XCTest coverage on the logic, and code review on every pull request.",
+        "chips": [
+          "Sprints",
+          "XCTest",
+          "Code Review"
+        ]
+      },
+      {
+        "num": "03 / OPTIMISE",
+        "title": "Profile & Harden",
+        "desc": "Profile with Instruments for memory, launch time and responsiveness; fix retain cycles and main-thread stalls; verify against real devices and older OS versions.",
+        "chips": [
+          "Instruments",
+          "Memory",
+          "Launch Time"
+        ]
+      },
+      {
+        "num": "04 / SHIP",
+        "title": "Release & App Review",
+        "desc": "Automate builds and TestFlight distribution with Fastlane, prepare App Store Connect metadata, then handle submission, review responses and post-launch monitoring.",
+        "chips": [
+          "Fastlane",
+          "TestFlight",
+          "App Review"
+        ]
+      }
+    ]
+  },
+  "faq": {
+    "sectionEyebrow": "FAQ",
+    "sectionTitle": "Common questions",
+    "items": [
+      {
+        "q": "What's your core stack?",
+        "a": "Swift and SwiftUI for new work, UIKit and Objective-C for the large existing codebases I maintain, with MVVM or Clean Architecture, dependency injection and Swift Concurrency (async/await) underneath. CoreData, SQLite and Keychain on the data side; REST and GraphQL over URLSession or Alamofire on the network side."
+      },
+      {
+        "q": "Do you build augmented reality?",
+        "a": "Yes — ARKit and SceneKit for 3D visualisation and product AR, plus CoreML and Vision for on-device intelligence. I maintain two open-source AR projects: MIARKitExamples, a set of ARKit/SceneKit reference samples, and ARCarRims, a 3D car-rim visualiser."
+      },
+      {
+        "q": "Can you deliver cross-platform, or native only?",
+        "a": "Both. Native iOS is where my depth is, and I've also delivered two production Flutter applications in Dart — including CollabCRM, a business operating system covering CRM, project management, recruitment, invoicing and payroll. So I can advise honestly on when a shared codebase pays off and when it costs more than it saves."
+      },
+      {
+        "q": "Do you handle App Store submission yourself?",
+        "a": "Yes. I run Fastlane-driven build and release pipelines, manage App Store Connect metadata and TestFlight distribution, and handle App Review end to end. 30+ applications have gone through that process without a compliance rejection standing."
+      },
+      {
+        "q": "Have you led or mentored a team?",
+        "a": "Yes — I conduct code reviews and mentor junior iOS developers at MindInventory, keeping architecture consistent and best practices enforced across the team, and I work day to day in Agile/Scrum with sprint planning and CI/CD-driven releases."
+      },
+      {
+        "q": "When are you available?",
+        "a": "I'm serving notice through October 2026 and open to conversations now for work starting from then — freelance projects, contract engagements, or a full-time role. Based in Ahmedabad, and I work with clients remotely across time zones."
+      },
+      {
+        "q": "Have you freelanced before?",
+        "a": "Not under my own name — this is my first move to taking clients directly, and I'd rather say so than pretend otherwise. What I do have is eight years of client delivery at MindInventory, an agency, building for international clients to their requirements, deadlines and App Store accounts. The work is the same; the invoice is the only part that changes."
+      },
+      {
+        "q": "What are your rates?",
+        "a": "On request — they depend on the scope, the engagement length and whether it's fixed-price or hourly. Tell me what you're building and I'll come back with a written scope and estimate."
+      },
+      {
+        "q": "How does a project start?",
+        "a": "A short call to understand what you need and check it's feasible, then a written scope, estimate and timeline before any work begins. For larger builds I prototype the riskiest part first — the AR tracking, the payment flow, the sync layer — so we both know it works before scaling up."
+      }
+    ]
+  },
+  "contact": {
+    "heading": "Let's ship something to the App Store.",
+    "sub": "Available for freelance and contract iOS work from October 2026, and open to senior full-time roles. Native Swift/SwiftUI, ARKit, and Flutter delivery. Based in Ahmedabad, working remotely worldwide.",
+    "chips": [
+      {
+        "label": "selarka.pish@gmail.com",
+        "href": "mailto:selarka.pish@gmail.com"
+      },
+      {
+        "label": "+91 99740 04501",
+        "href": "tel:+919974004501"
+      },
+      {
+        "label": "WhatsApp ↗",
+        "href": "https://wa.me/919974004501"
+      },
+      {
+        "label": "Ahmedabad, Gujarat, India",
+        "href": ""
+      },
+      {
+        "label": "LinkedIn ↗",
+        "href": "https://www.linkedin.com/in/%EF%A3%BFpiyush-selarka-007a2312a/"
+      },
+      {
+        "label": "GitHub ↗",
+        "href": "https://github.com/PiyushSelarka"
+      },
+      {
+        "label": "Download Resume ↓",
+        "href": "Piyush_Selarka_Resume.pdf",
+        "download": true
+      }
+    ]
+  },
+  "footer": {
+    "brand": "© 2026 Piyush Selarka — Senior iOS Developer · ARKit · SwiftUI · Flutter.",
+    "links": [
+      {
+        "label": "Home",
+        "href": "#home"
+      },
+      {
+        "label": "Projects",
+        "href": "#projects"
+      }
+    ]
+  }
+}
