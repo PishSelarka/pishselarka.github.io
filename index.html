@@ -248,59 +248,116 @@
   .stat-num{ font-family:var(--font-display); font-size:28px; font-weight:700; color:var(--accent); letter-spacing:-.02em; }
   .stat-label{ font-size:12.5px; color:var(--text-dim); margin-top:4px; }
 
-  /* ---------- hero: ARKit device viewport ---------- */
-  .hero-visual{ display:flex; align-items:center; justify-content:center; position:relative; padding:14px 0; }
+  /* ---------- hero: foldable duo running an ARKit session ---------- */
+  .hero-visual{
+    display:flex; align-items:center; justify-content:center; position:relative; padding:14px 0;
+    perspective:1600px; perspective-origin:52% 46%;
+    --panel-w:186px; --panel-h:396px;
+  }
   .device{
-    position:relative; width:252px; height:512px; flex-shrink:0;
-    border:1px solid #48484A; border-radius:42px; padding:9px;
+    position:relative; display:flex; align-items:stretch; flex-shrink:0;
+    transform-style:preserve-3d;
+    transform:rotateX(3deg) rotateY(-13deg);
+  }
+  .panel{
+    position:relative; width:var(--panel-w); height:var(--panel-h); flex-shrink:0;
+    border:1px solid #48484A; padding:8px;
     background:linear-gradient(170deg, #3A3A3C, #1D1D1F);
     box-shadow:0 22px 54px rgba(0,0,0,.24), 0 4px 12px rgba(0,0,0,.10),
                inset 0 1px 0 rgba(255,255,255,.16);
   }
+  /* left leaf hinges on its inner edge and breathes open and closed */
+  .panel-left{
+    border-radius:28px 5px 5px 28px;
+    transform-origin:100% 50%;
+    animation:fold 15s ease-in-out infinite;
+  }
+  .panel-right{ border-radius:5px 28px 28px 5px; }
+  @keyframes fold{
+    0%,100%{ transform:rotateY(31deg); }
+    50%    { transform:rotateY(13deg); }
+  }
+  .hinge{
+    width:5px; align-self:stretch; flex-shrink:0;
+    background:linear-gradient(90deg,#141416,#3A3A3C 45%,#141416);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.10);
+  }
   .device-screen{
-    position:relative; width:100%; height:100%; border-radius:34px; overflow:hidden;
+    position:relative; width:100%; height:100%; border-radius:22px; overflow:hidden;
     background:radial-gradient(ellipse 90% 60% at 50% 8%, #131A2B 0%, #080A11 70%);
     border:1px solid #05070C;
   }
-  .island{
-    position:absolute; top:11px; left:50%; transform:translateX(-50%);
-    width:74px; height:21px; background:#04060B; border-radius:12px; z-index:6;
+  .panel-left .device-screen{ border-radius:22px 3px 3px 22px; }
+  .panel-right .device-screen{ border-radius:3px 22px 22px 3px; }
+  .cam{
+    position:absolute; top:10px; right:14px; width:6px; height:6px;
+    background:#04060B; border-radius:50%; z-index:6;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.10);
   }
-  /* AR plane-detection floor */
+
+  /* ----- left leaf: the app's scene list ----- */
+  .ui-pane{ position:absolute; inset:0; padding:26px 14px 14px; display:flex; flex-direction:column; }
+  .ui-title{
+    font-family:var(--font-display); font-size:13px; font-weight:600; color:#ECEDF2;
+    margin-bottom:3px;
+  }
+  .ui-sub{
+    font-family:var(--font-mono); font-size:8px; letter-spacing:.1em; color:#5D6478;
+    text-transform:uppercase; margin-bottom:14px;
+  }
+  .ui-row{
+    display:flex; align-items:center; gap:8px; padding:8px 9px; margin-bottom:6px;
+    border-radius:9px; font-size:10.5px; color:#9AA3B8;
+    background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.05);
+  }
+  .ui-row.on{ background:rgba(10,132,255,.16); border-color:rgba(10,132,255,.42); color:#E9ECF2; }
+  .ui-dot{ width:5px; height:5px; border-radius:50%; background:#3A4055; flex-shrink:0; }
+  .ui-row.on .ui-dot{ background:var(--screen-accent); box-shadow:0 0 7px var(--screen-accent); }
+  .ui-meter{ margin-top:auto; }
+  .ui-meter span{
+    display:block; font-family:var(--font-mono); font-size:8px; letter-spacing:.08em;
+    color:#5D6478; margin-bottom:5px;
+  }
+  .ui-bar{ height:3px; border-radius:999px; background:rgba(255,255,255,.08); overflow:hidden; }
+  .ui-bar i{
+    display:block; height:100%; width:72%; border-radius:999px;
+    background:linear-gradient(90deg, var(--screen-accent), #BF5AF2);
+  }
+
+  /* ----- right leaf: the AR viewport ----- */
   .ar-floor{
     position:absolute; left:-60%; right:-60%; bottom:-14%; height:66%;
     background-image:
       linear-gradient(rgba(10,132,255,.34) 1px, transparent 1px),
       linear-gradient(90deg, rgba(10,132,255,.34) 1px, transparent 1px);
-    background-size:30px 30px;
-    transform:perspective(340px) rotateX(66deg);
+    background-size:26px 26px;
+    transform:perspective(300px) rotateX(66deg);
     -webkit-mask-image:linear-gradient(to top, #000 6%, transparent 82%);
     mask-image:linear-gradient(to top, #000 6%, transparent 82%);
     animation:floorDrift 9s linear infinite;
   }
-  @keyframes floorDrift{ from{ background-position:0 0; } to{ background-position:0 30px; } }
+  @keyframes floorDrift{ from{ background-position:0 0; } to{ background-position:0 26px; } }
 
-  .ar-stage{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; perspective:760px; }
+  .ar-stage{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; perspective:700px; }
   .wire-cube{
-    width:104px; height:104px; position:relative; transform-style:preserve-3d;
-    animation:spin 18s linear infinite; margin-top:-26px;
+    width:86px; height:86px; position:relative; transform-style:preserve-3d;
+    animation:spin 18s linear infinite; margin-top:-20px;
   }
   @keyframes spin{ from{ transform:rotateX(-16deg) rotateY(0deg); } to{ transform:rotateX(-16deg) rotateY(360deg); } }
   .wire-face{
-    position:absolute; width:104px; height:104px;
+    position:absolute; width:86px; height:86px;
     border:1px solid rgba(10,132,255,.62);
     background:rgba(10,132,255,.05);
   }
-  .wf-front{ transform:translateZ(52px); }
-  .wf-back{ transform:translateZ(-52px) rotateY(180deg); }
-  .wf-right{ transform:rotateY(90deg) translateZ(52px); border-color:rgba(191,90,242,.5); }
-  .wf-left{ transform:rotateY(-90deg) translateZ(52px); border-color:rgba(191,90,242,.5); }
-  .wf-top{ transform:rotateX(90deg) translateZ(52px); }
-  .wf-bottom{ transform:rotateX(-90deg) translateZ(52px); }
+  .wf-front{ transform:translateZ(43px); }
+  .wf-back{ transform:translateZ(-43px) rotateY(180deg); }
+  .wf-right{ transform:rotateY(90deg) translateZ(43px); border-color:rgba(191,90,242,.5); }
+  .wf-left{ transform:rotateY(-90deg) translateZ(43px); border-color:rgba(191,90,242,.5); }
+  .wf-top{ transform:rotateX(90deg) translateZ(43px); }
+  .wf-bottom{ transform:rotateX(-90deg) translateZ(43px); }
 
-  /* focus reticle around the anchored object */
-  .reticle{ position:absolute; top:50%; left:50%; width:158px; height:158px; transform:translate(-50%,-56%); }
-  .reticle i{ position:absolute; width:15px; height:15px; border:1.5px solid var(--screen-signal); opacity:.9; }
+  .reticle{ position:absolute; top:50%; left:50%; width:128px; height:128px; transform:translate(-50%,-56%); }
+  .reticle i{ position:absolute; width:13px; height:13px; border:1.5px solid var(--screen-signal); opacity:.9; }
   .reticle i:nth-child(1){ top:0; left:0; border-right:none; border-bottom:none; }
   .reticle i:nth-child(2){ top:0; right:0; border-left:none; border-bottom:none; }
   .reticle i:nth-child(3){ bottom:0; left:0; border-right:none; border-top:none; }
@@ -313,11 +370,11 @@
   }
   @keyframes scan{ 0%{ top:0%; } 100%{ top:100%; } }
 
-  .hud{ position:absolute; left:0; right:0; z-index:5; font-family:var(--font-mono); font-size:9.5px; letter-spacing:.09em; color:var(--text-faint); }
-  .hud-top{ top:42px; padding:0 18px; display:flex; justify-content:flex-start; gap:5px; }
+  .hud{ position:absolute; left:0; right:0; z-index:5; font-family:var(--font-mono); font-size:8.5px; letter-spacing:.08em; color:#5D6478; }
+  .hud-top{ top:26px; padding:0 13px; display:flex; justify-content:flex-start; gap:4px; }
   .hud-top .sid{ color:var(--screen-accent); }
-  .hud-bot{ bottom:22px; padding:0 18px; display:flex; align-items:center; gap:7px; }
-  .hud-bot .rec{ width:5px; height:5px; border-radius:50%; background:var(--screen-signal); animation:pulse 2.4s ease-in-out infinite; flex-shrink:0; }
+  .hud-bot{ bottom:16px; padding:0 13px; display:flex; align-items:center; gap:6px; }
+  .hud-bot .rec{ width:4px; height:4px; border-radius:50%; background:var(--screen-signal); animation:pulse 2.4s ease-in-out infinite; flex-shrink:0; }
 
   .float-tag{
     position:absolute; font-family:var(--font-mono); font-size:11px; z-index:7;
@@ -328,9 +385,11 @@
     -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
   }
   .float-tag::before{ content:''; position:absolute; width:8px; height:8px; border-left:1px solid var(--accent-2); border-top:1px solid var(--accent-2); top:-1px; left:-1px; }
-  .ft-1{ top:9%; right:-6%; }
-  .ft-2{ top:47%; left:-21%; }
-  .ft-3{ bottom:11%; right:-9%; }
+  /* positioned against .hero-visual (outside the 3D subtree) so they always
+     paint above the folded leaf */
+  .ft-1{ top:3%; right:1%; }
+  .ft-2{ top:43%; left:0; }
+  .ft-3{ bottom:5%; right:3%; }
 
   /* ---------- flagship band ---------- */
   #track{ background:var(--band); -webkit-backdrop-filter:var(--blur); backdrop-filter:var(--blur); border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft); padding:46px 0; position:relative; z-index:1; }
@@ -598,6 +657,7 @@
   @media (max-width:960px){
     .hero-grid{ grid-template-columns:1fr; gap:52px; }
     .hero-visual{ order:-1; }
+    .hero-visual{ --panel-w:170px; --panel-h:366px; }
     .stat-row{ grid-template-columns:repeat(2,1fr); }
     .skill-grid{ grid-template-columns:repeat(2,1fr); }
     .svc-grid{ grid-template-columns:repeat(2,1fr); }
@@ -611,12 +671,13 @@
     .nav-toggle{ display:flex; }
     .wrap{ padding:0 20px; }
     .hero{ padding:112px 0 56px; }
+    .hero-visual{ --panel-w:140px; --panel-h:308px; }
     .section-pad{ padding:60px 0; }
     .skill-grid, .process-list, .app-grid, .svc-grid{ grid-template-columns:1fr; }
     .proj-card{ flex-basis:100%; }
     .stat-row{ grid-template-columns:repeat(2,1fr); }
     .track-stats{ gap:26px 34px; }
-    .ft-1{ right:-2%; } .ft-2{ left:-4%; } .ft-3{ right:-2%; }
+    .ft-1{ right:-1%; } .ft-2{ left:-2%; } .ft-3{ right:-1%; }
     #contact{ padding:70px 0; }
   }
 </style>
@@ -647,29 +708,48 @@
     </div>
 
     <div class="hero-visual">
-      <div class="device" role="img" aria-label="An iPhone running an ARKit session, with a wireframe model anchored to a detected floor plane">
-        <div class="device-screen">
-          <div class="ar-floor"></div>
-          <div class="ar-stage">
-            <div class="wire-cube">
-              <div class="wire-face wf-front"></div>
-              <div class="wire-face wf-back"></div>
-              <div class="wire-face wf-right"></div>
-              <div class="wire-face wf-left"></div>
-              <div class="wire-face wf-top"></div>
-              <div class="wire-face wf-bottom"></div>
+      <div class="device" role="img" aria-label="A foldable dual-screen phone running an ARKit session: a scene list on the left panel, and on the right a wireframe model anchored to a detected floor plane">
+        <div class="panel panel-left">
+          <div class="device-screen">
+            <div class="ui-pane">
+              <div class="ui-title">Scenes</div>
+              <div class="ui-sub">ARKit · SceneKit</div>
+              <div class="ui-row on"><span class="ui-dot"></span>Living Room</div>
+              <div class="ui-row"><span class="ui-dot"></span>Showroom</div>
+              <div class="ui-row"><span class="ui-dot"></span>Face Try-On</div>
+              <div class="ui-row"><span class="ui-dot"></span>Car Rims</div>
+              <div class="ui-meter">
+                <span>ANCHORS · 12</span>
+                <div class="ui-bar"><i></i></div>
+              </div>
             </div>
           </div>
-          <div class="reticle"><i></i><i></i><i></i><i></i></div>
-          <div class="scanline"></div>
-          <div class="island"></div>
-          <div class="hud hud-top">
-            <span id="hudLabel"></span><span class="sid" id="hudSession"></span>
-          </div>
-          <div class="hud hud-bot"><span class="rec"></span><span id="hudStatus"></span></div>
         </div>
-        <div id="deviceTags"></div>
+        <div class="hinge"></div>
+        <div class="panel panel-right">
+          <div class="device-screen">
+            <div class="ar-floor"></div>
+            <div class="ar-stage">
+              <div class="wire-cube">
+                <div class="wire-face wf-front"></div>
+                <div class="wire-face wf-back"></div>
+                <div class="wire-face wf-right"></div>
+                <div class="wire-face wf-left"></div>
+                <div class="wire-face wf-top"></div>
+                <div class="wire-face wf-bottom"></div>
+              </div>
+            </div>
+            <div class="reticle"><i></i><i></i><i></i><i></i></div>
+            <div class="scanline"></div>
+            <div class="cam"></div>
+            <div class="hud hud-top">
+              <span id="hudLabel"></span><span class="sid" id="hudSession"></span>
+            </div>
+            <div class="hud hud-bot"><span class="rec"></span><span id="hudStatus"></span></div>
+          </div>
+        </div>
       </div>
+      <div id="deviceTags"></div>
     </div>
   </div>
 </section>
