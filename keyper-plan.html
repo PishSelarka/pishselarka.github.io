@@ -1,0 +1,267 @@
+<meta charset="utf-8">
+<title>Keyper Arabic Fix Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+:root{
+  --wash:#E9EEF2;
+  --sheet:#FFFFFF;
+  --ink:#0E1C2B;
+  --ink-2:#4A5B6B;
+  --ink-3:#7B8B99;
+  --rule:#DCE3E9;
+  --teal:#0F766E;
+  --teal-soft:#E4F1EF;
+  --warn:#B42318;
+  --warn-soft:#FBEAE7;
+  --screen:#F6F8FA;
+  --latin:"Epilogue","Helvetica Neue",Arial,sans-serif;
+  --arabic:"IBM Plex Sans Arabic","Geeza Pro","Noto Sans Arabic",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--wash);color:var(--ink);font-family:var(--latin);font-size:16px;line-height:1.55}
+[hidden]{display:none!important}
+img{max-width:100%}
+p{margin:0}
+a{color:var(--teal)}
+:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+.sheet{max-width:960px;margin:0 auto;background:var(--sheet);padding-inline:clamp(18px,5vw,56px);padding-block:clamp(28px,5vw,56px) 48px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--teal)}
+h1{font-family:var(--latin);font-weight:700;font-size:clamp(28px,4.4vw,44px);line-height:1.06;letter-spacing:-.015em;margin:10px 0 14px;text-wrap:balance;max-width:20ch}
+.byline{font-size:15px;color:var(--ink-2);padding-bottom:22px;border-bottom:2px solid var(--ink)}
+.byline b{color:var(--ink);font-weight:600}
+h2{font-family:var(--latin);font-weight:700;font-size:clamp(20px,2.6vw,26px);line-height:1.15;margin:0;text-wrap:balance}
+h3{font-family:var(--latin);font-weight:600;font-size:16px;margin:0}
+section.block{padding-top:36px}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);background:var(--teal-soft);padding:4px 9px;border-radius:999px;margin-bottom:10px}
+.lede{font-size:17px;color:var(--ink-2);max-width:66ch;margin-top:10px;text-wrap:pretty}
+
+.facts{display:grid;gap:0;margin-top:18px;border-top:1px solid var(--rule)}
+.fact{display:grid;grid-template-columns:172px 1fr;gap:6px 24px;padding-block:14px;border-bottom:1px solid var(--rule)}
+.fact dt{font-size:13px;font-weight:600;color:var(--ink);letter-spacing:.01em}
+.fact dd{margin:0;font-size:15px;color:var(--ink-2);max-width:62ch}
+.fact .flag{color:var(--warn);font-weight:600}
+
+.phones{display:flex;flex-wrap:wrap;gap:28px;margin-top:24px;align-items:flex-start}
+.phone-wrap{display:grid;gap:10px;width:268px}
+.phone{width:268px;height:546px;background:var(--ink);border-radius:36px;padding:9px;box-shadow:0 10px 24px rgba(14,28,43,.14)}
+.screen{height:100%;background:var(--screen);border-radius:28px;overflow:hidden;display:flex;flex-direction:column;font-family:var(--arabic)}
+.notch{height:26px;display:flex;align-items:center;justify-content:center}
+.notch span{width:78px;height:5px;border-radius:3px;background:rgba(14,28,43,.18)}
+.caption{font-size:13px;color:var(--ink-3);line-height:1.45}
+.caption b{color:var(--ink);font-weight:600}
+
+.appbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px 12px;background:#fff;border-bottom:1px solid var(--rule)}
+.appbar .title{font-size:16px;font-weight:600;color:var(--ink)}
+.chev{width:26px;height:26px;border-radius:50%;background:var(--screen);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--ink-2)}
+.pane{padding:14px 16px;display:grid;gap:12px;overflow:hidden}
+.card{background:#fff;border:1px solid var(--rule);border-radius:14px;padding:13px 14px;display:grid;gap:7px}
+.k{font-size:12px;color:var(--ink-3)}
+.v{font-size:15px;font-weight:600;color:var(--ink)}
+.amount{font-size:26px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.bar{height:7px;border-radius:4px;background:var(--rule);overflow:hidden;display:flex;flex-direction:row-reverse}
+.bar i{display:block;height:100%;width:92%;background:var(--teal);border-radius:4px}
+.cta{margin-top:2px;background:var(--teal);color:#fff;border-radius:12px;padding:12px;text-align:center;font-size:15px;font-weight:600}
+.ghost{border:1px solid var(--teal);color:var(--teal);border-radius:12px;padding:11px;text-align:center;font-size:14px;font-weight:600;background:#fff}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pill{font-size:11px;font-weight:500;padding:3px 8px;border-radius:999px;background:var(--teal-soft);color:var(--teal)}
+.pill.muted{background:var(--screen);color:var(--ink-3)}
+.thumb{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#D7E3EA,#EDF2F5);flex:none}
+.field{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:10px 12px;display:grid;gap:4px}
+.field .ph{font-size:15px;color:var(--ink-3);letter-spacing:.04em}
+.map{height:132px;border-radius:14px;background:
+  radial-gradient(circle at 62% 46%, rgba(15,118,110,.20) 0 12px, rgba(15,118,110,0) 13px),
+  linear-gradient(0deg,#E7EDF1,#E7EDF1);
+  border:1px solid var(--rule);position:relative;overflow:hidden}
+.map::before{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(90deg,rgba(14,28,43,.07) 0 1px,transparent 1px 34px),
+  repeating-linear-gradient(0deg,rgba(14,28,43,.07) 0 1px,transparent 1px 30px)}
+.map .pin{position:absolute;left:62%;top:46%;width:16px;height:16px;margin:-16px 0 0 -8px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--teal);box-shadow:0 2px 6px rgba(14,28,43,.3)}
+
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px}
+.step{border-top:3px solid var(--teal);padding-top:12px;display:grid;gap:6px;align-content:start}
+.step .n{font-size:12px;font-weight:700;color:var(--teal);letter-spacing:.06em}
+.step p{font-size:14.5px;color:var(--ink-2)}
+.step b{color:var(--ink);font-weight:600;font-size:15px}
+
+.notes{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+.notes li{display:grid;grid-template-columns:auto 1fr;gap:12px;font-size:15px;color:var(--ink-2);max-width:74ch}
+.notes li::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--teal);margin-top:8px}
+.notes b{color:var(--ink);font-weight:600}
+
+.timing{margin-top:36px;background:var(--teal-soft);border-radius:16px;padding:22px 24px;display:grid;gap:12px}
+.timing .line{font-size:19px;font-weight:600;color:var(--ink);max-width:56ch;text-wrap:pretty}
+.weeks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:2px}
+.week{background:#fff;border-radius:12px;padding:12px 14px;display:grid;gap:4px}
+.week span{font-size:11.5px;font-weight:700;color:var(--teal);letter-spacing:.06em;text-transform:uppercase}
+.week p{font-size:14px;color:var(--ink-2)}
+
+.foot{margin-top:40px;padding-top:20px;border-top:1px solid var(--rule);display:grid;gap:8px}
+.foot .who{font-size:15px;color:var(--ink)}
+.foot .who b{font-weight:600}
+.foot .small{font-size:12.5px;color:var(--ink-3);max-width:80ch}
+
+@media (max-width:900px){ .steps{grid-template-columns:1fr} .weeks{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:560px){
+  .fact{grid-template-columns:1fr}
+  .phone,.phone-wrap{width:100%;max-width:300px}
+  .phone{height:560px}
+  .weeks{grid-template-columns:1fr}
+}
+@media print{
+  body{background:#fff}
+  .sheet{max-width:none;padding:0}
+  .phone{box-shadow:none}
+  section.block{break-inside:avoid}
+}
+</style>
+<div class="sheet">
+  <header>
+    <p class="eyebrow">One-page plan · 16 September 2026</p>
+    <h1>Arabic Keyper, and owner onboarding that always ends in a saved property</h1>
+    <p class="byline">Prepared for <b>Omar Abu Innab</b>, Co-founder &amp; CEO, Keyper · by <b>Piyush Selarka</b>, senior iOS &amp; Flutter engineer</p>
+  </header>
+
+  <section class="block">
+    <span class="tag">What I saw</span>
+    <h2>Two things the App Store page already tells you</h2>
+    <dl class="facts">
+      <div class="fact">
+        <dt>Language</dt>
+        <dd><span class="flag">English only.</span> Version 6.5.0 shipped on 7 September with an RNPM flow revamp, and the listing still offers one language, in a market where a large share of tenants and landlords read Arabic first.</dd>
+      </div>
+      <div class="fact">
+        <dt>Owner reviews</dt>
+        <dd><span class="flag">Address entry dead-ends.</span> Owners report that they cannot enter an address by hand, and that the neighbourhood search often fails to find their building, which leaves them unable to add the property at all.</dd>
+      </div>
+      <div class="fact">
+        <dt>What's next for you</dt>
+        <dd>The Series A points at financing products for owners and at institutional landlords. Both mean more owners onboarding more properties, faster, through these exact screens.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="block">
+    <span class="tag">Fix 1</span>
+    <h2>Arabic, fully mirrored</h2>
+    <p class="lede">Not a translation pass. The layout flips, so navigation, chevrons, swipe actions and progress all read right to left, while money and dates keep their own direction inside Arabic text.</p>
+
+    <div class="phones">
+      <div class="phone-wrap">
+        <div class="phone"><div class="screen" dir="rtl" lang="ar">
+          <div class="notch"><span></span></div>
+          <div class="appbar"><div class="chev">&#8250;</div><div class="title">الإيجار الشهري</div><div class="pill">11 / 12</div></div>
+          <div class="pane">
+            <div class="card">
+              <div class="k">الدفعة القادمة</div>
+              <div class="amount">4,250 د.إ</div>
+              <div class="row"><div class="v">1 أكتوبر 2026</div><div class="pill">خصم مباشر</div></div>
+              <div class="bar"><i></i></div>
+              <div class="k">11 من 12 دفعة</div>
+            </div>
+            <div class="cta">ادفع الآن</div>
+            <div class="card">
+              <div class="row"><div class="k">الرصيد المتبقي</div><div class="v">12,750 د.إ</div></div>
+              <div class="row"><div class="k">عقد الإيجار</div><div class="v">مرسى دبي</div></div>
+            </div>
+          </div>
+        </div></div>
+        <p class="caption"><b>Tenant, monthly rent.</b> Back chevron, the payment progress bar and swipe actions all mirror. The AED figure and the date stay left to right inside the Arabic line.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone"><div class="screen" dir="rtl" lang="ar">
+          <div class="notch"><span></span></div>
+          <div class="appbar"><div class="chev">&#8250;</div><div class="title">محفظتي</div><div class="pill muted">2 عقار</div></div>
+          <div class="pane">
+            <div class="card">
+              <div class="k">الإيجار المستلم مقدماً</div>
+              <div class="amount">380,000 د.إ</div>
+            </div>
+            <div class="card">
+              <div class="row"><div class="thumb"></div><div style="flex:1"><div class="v">شقة غرفتين · مرسى دبي</div><div class="k">95,000 د.إ سنوياً</div></div><div class="pill">مؤجرة</div></div>
+            </div>
+            <div class="card">
+              <div class="row"><div class="thumb"></div><div style="flex:1"><div class="v">استوديو · الفرجان</div><div class="k">48,000 د.إ سنوياً</div></div><div class="pill muted">شاغرة</div></div>
+            </div>
+            <div class="ghost">إضافة عقار</div>
+          </div>
+        </div></div>
+        <p class="caption"><b>Owner, portfolio.</b> Rows, badges and the add-property action mirror. Currency formatting, sort labels and empty states all get Arabic copy, not machine translation.</p>
+      </div>
+    </div>
+
+    <ul class="notes">
+      <li><b>Mirroring beats translating.</b> Strings alone leave a broken screen: chevrons pointing the wrong way, progress filling from the wrong side, charts reading backwards.</li>
+      <li><b>Numbers and dates are where RTL builds break.</b> AED amounts, IBANs, cheque numbers and dates need their own direction inside Arabic text. Digit style is a product call: Latin digits are standard in the UAE, Arabic-Indic can follow the device locale.</li>
+      <li><b>How it's built.</b> Layout direction driven by the framework rather than hardcoded left and right, then a device pass over the 20 or so screens that carry money.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <span class="tag">Fix 2</span>
+    <h2>Owner address entry that always ends in a saved property</h2>
+    <p class="lede">Today an owner whose building the search cannot find has nowhere to go. Three changes close that door, and prepare the app for landlords who arrive with dozens of units.</p>
+
+    <div class="phones">
+      <div class="phone-wrap">
+        <div class="phone"><div class="screen" dir="rtl" lang="ar">
+          <div class="notch"><span></span></div>
+          <div class="appbar"><div class="chev">&#8250;</div><div class="title">إضافة عقار</div><div class="pill">خطوة 2 من 3</div></div>
+          <div class="pane">
+            <div class="map"><i class="pin"></i></div>
+            <div class="field"><div class="k">رقم مكاني</div><div class="ph">2875 87503</div></div>
+            <div class="field"><div class="k">المبنى</div><div class="ph">يُملأ تلقائياً</div></div>
+            <div class="field"><div class="k">المنطقة</div><div class="ph">يُملأ تلقائياً</div></div>
+            <div class="cta">تأكيد الموقع</div>
+            <div class="k" style="text-align:center">أو حرّك الدبوس على الخريطة</div>
+          </div>
+        </div></div>
+        <p class="caption"><b>Step 2, the fallback.</b> A 10-digit Makani number or a dragged map pin fills the building and community fields, so the owner never hits a dead end.</p>
+      </div>
+
+      <div style="flex:1;min-width:280px">
+        <div class="steps" style="grid-template-columns:1fr">
+          <div class="step">
+            <span class="n">STEP 1</span>
+            <b>Search stays exactly as it is</b>
+            <p>When the building is found, nothing changes for the owner who is already happy.</p>
+          </div>
+          <div class="step">
+            <span class="n">STEP 2</span>
+            <b>Not found? Makani number or map pin</b>
+            <p>Dubai's 10-digit Makani number, or a pin the owner drags, auto-fills building and community. Manual entry as the last resort, with the pin saved alongside it.</p>
+          </div>
+          <div class="step">
+            <span class="n">STEP 3</span>
+            <b>Bulk import for portfolios</b>
+            <p>Institutional landlords upload a spreadsheet once, review what matched, and confirm. No 40 single-property flows, and no support ticket per building.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="timing">
+      <p class="line">Both fixes, one fixed price, starting early October and finished in four weeks.</p>
+      <div class="weeks">
+        <div class="week"><span>Week 1</span><p>RTL audit, then the money screens mirrored end to end.</p></div>
+        <div class="week"><span>Week 2</span><p>Arabic across the remaining flows, with a reviewed glossary.</p></div>
+        <div class="week"><span>Week 3</span><p>Makani and map-pin address entry, plus bulk import.</p></div>
+        <div class="week"><span>Week 4</span><p>Device QA in both directions, then the App Store build.</p></div>
+      </div>
+      <p class="caption">Happy to put a number on it after a 15-minute call, once I know how many screens carry money.</p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p class="who"><b>Piyush Selarka</b> · Senior iOS developer, 8 years, 30+ App Store apps · payments and wallet modules on Bhoj, 5M+ downloads · Swift, SwiftUI, Flutter · <a href="https://pishselarka.github.io/">pishselarka.github.io</a></p>
+    <p class="small">Mockups are concept sketches drawn for this note, not Keyper artwork, and the Arabic copy is placeholder wording for layout. App Store details checked on 15 September 2026.</p>
+  </footer>
+</div>
