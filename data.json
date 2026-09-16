@@ -108,8 +108,8 @@
         "label": "NEW USERS"
       },
       {
-        "num": "4",
-        "label": "CORE MODULES OWNED"
+        "num": "4.0+",
+        "label": "AVERAGE RATING"
       }
     ],
     "linkLabel": "",
@@ -362,7 +362,7 @@
         "title": "Draw N Guess Multiplayer",
         "category": "Gaming · Real-time Multiplayer",
         "role": "Senior iOS Developer — MindInventory",
-        "description": "Built multiplayer game experiences and real-time user interactions — developing gameplay features, user engagement flows and production-quality App Store releases.",
+        "description": "Built multiplayer game experiences and real-time user interactions — developing gameplay features, user engagement flows and production-quality App Store releases for an app ecosystem with 5M+ installs across the App Store and Google Play. Rated 4.3 from 7K+ App Store ratings.",
         "tags": [
           "Swift",
           "Real-time Sync",
@@ -370,7 +370,9 @@
           "App Store"
         ],
         "icon": "brush",
-        "video": ""
+        "video": "",
+        "link": "https://apps.apple.com/us/app/draw-n-guess-multiplayer/id532137502",
+        "linkLabel": "View on the App Store ↗"
       },
       {
         "id": "portfolio30",
