@@ -514,6 +514,59 @@
     border:1px solid var(--border); border-radius:var(--r-xs); padding:4px 10px;
   }
 
+  /* ---------- certifications ---------- */
+  /* Reads as the tail of the experience timeline above it: #experience already
+     leaves 78px of bottom padding, so this section drops its own top padding. */
+  #certifications{ padding-top:0; }
+  .cert-list{ display:flex; flex-direction:column; gap:20px; }
+  .cert-card{
+    display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); overflow:hidden;
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg);
+    box-shadow:var(--sheen), var(--card);
+  }
+  .cert-card:hover .bracket-corner{ width:24px; height:24px; opacity:1; }
+  .cert-visual{
+    position:relative; display:flex; align-items:center; justify-content:center;
+    padding:38px 36px; border-right:1px solid var(--border);
+    background:radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0,113,227,.05), transparent 70%);
+  }
+  .cert-preview{
+    display:flex; flex-direction:column; align-items:center; gap:16px; width:100%;
+    background:none; border:none; padding:0; color:inherit; cursor:zoom-in; border-radius:var(--r-md);
+  }
+  /* drop-shadow (not box-shadow) so it follows the PNG's rounded, transparent corners */
+  .cert-preview img{
+    width:100%; height:auto; filter:drop-shadow(0 10px 22px rgba(28,42,84,.16));
+    transition:transform .3s ease, filter .3s ease;
+  }
+  .cert-preview:hover img{ transform:translateY(-3px); filter:drop-shadow(0 16px 30px rgba(28,42,84,.22)); }
+  .cert-hint{
+    display:inline-flex; align-items:center; gap:7px; font-family:var(--font-mono);
+    font-size:11px; color:var(--text-faint); letter-spacing:.05em; transition:color .25s ease;
+  }
+  .cert-hint svg{ width:12px; height:12px; flex-shrink:0; }
+  .cert-preview:hover .cert-hint{ color:var(--accent-ink); }
+  .cert-body{ padding:38px 38px 38px 40px; display:flex; flex-direction:column; justify-content:center; }
+  .cert-issuer{ font-family:var(--font-mono); font-size:11px; color:var(--accent-ink); letter-spacing:.07em; margin-bottom:10px; text-transform:uppercase; }
+  .cert-body h3{ font-family:var(--font-display); font-size:27px; font-weight:600; line-height:1.18; letter-spacing:-.02em; margin-bottom:12px; }
+  .cert-desc{ font-size:15.5px; line-height:1.66; color:var(--text-dim); margin-bottom:22px; }
+  .cert-facts{ border-top:1px solid var(--border-soft); margin-bottom:26px; }
+  .cert-fact{ display:flex; justify-content:space-between; align-items:baseline; gap:16px; padding:12px 0; border-bottom:1px solid var(--border-soft); }
+  .cert-fact dt{ font-family:var(--font-mono); font-size:11px; color:var(--text-faint); letter-spacing:.07em; text-transform:uppercase; }
+  .cert-fact dd{ font-family:var(--font-mono); font-size:13px; color:var(--text); letter-spacing:.02em; text-align:right; }
+  .cert-body .btn{ align-self:flex-start; }
+
+  /* full-size view — native <dialog>, so Escape, focus trap and focus return come free */
+  .lightbox{ max-width:none; max-height:none; margin:auto; padding:0; border:none; background:none; overflow:visible; }
+  .lightbox::backdrop{ background:rgba(0,0,0,.42); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
+  .lightbox img{
+    display:block; width:auto; height:auto;
+    max-width:min(1492px, calc(100vw - 48px));
+    max-height:calc(100vh - 48px); max-height:calc(100dvh - 48px);
+    filter:drop-shadow(0 20px 48px rgba(0,0,0,.35));
+  }
+  .lightbox .modal-close{ top:-14px; right:-14px; }
+
   /* ---------- projects ---------- */
   #projects{ background:var(--band); -webkit-backdrop-filter:var(--blur); backdrop-filter:var(--blur); border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft); }
   /* flex, not grid: an incomplete final row centres instead of stranding a card */
@@ -665,6 +718,8 @@
     .proj-card{ flex-basis:calc((100% - 20px) / 2); }
     .process-list{ grid-template-columns:repeat(2,1fr); }
     .app-grid{ grid-template-columns:repeat(2,1fr); }
+    .cert-card{ grid-template-columns:1fr; }
+    .cert-visual{ border-right:none; border-bottom:1px solid var(--border); }
   }
   @media (max-width:680px){
     .nav-links, .nav-cta{ display:none; }
@@ -675,6 +730,9 @@
     .section-pad{ padding:60px 0; }
     .skill-grid, .process-list, .app-grid, .svc-grid{ grid-template-columns:1fr; }
     .proj-card{ flex-basis:100%; }
+    .cert-visual{ padding:26px 20px; }
+    .cert-body{ padding:26px 22px 28px; }
+    .cert-body h3{ font-size:23px; }
     .stat-row{ grid-template-columns:repeat(2,1fr); }
     .track-stats{ gap:26px 34px; }
     .ft-1{ right:-1%; } .ft-2{ left:-2%; } .ft-3{ right:-1%; }
@@ -796,6 +854,14 @@
   </div>
 </section>
 
+<!-- ============ CERTIFICATIONS ============ -->
+<section id="certifications" class="section-pad">
+  <div class="wrap">
+    <div class="sec-head reveal" id="certificationsHead"></div>
+    <div class="cert-list reveal" id="certList"></div>
+  </div>
+</section>
+
 <!-- ============ PROJECTS ============ -->
 <section id="projects" class="section-pad">
   <div class="wrap">
@@ -862,6 +928,12 @@
   </div>
 </div>
 
+<!-- ============ CERTIFICATE LIGHTBOX ============ -->
+<dialog class="lightbox" id="certLightbox">
+  <button type="button" class="modal-close" id="certClose" aria-label="Close">✕</button>
+  <img id="certLightboxImg" alt="">
+</dialog>
+
 <div id="loadError" style="display:none; position:fixed; bottom:20px; left:20px; right:20px; max-width:480px; margin:0 auto; background:#FFFFFF; border:1px solid #0071E3; border-radius:var(--r-md); padding:16px 20px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#1D1D1F; box-shadow:0 10px 30px rgba(0,0,0,.14); line-height:1.6; z-index:2000;">
   Couldn't load <code>data.json</code>. If you opened this file directly (file://), run a local server instead — e.g. <code>python3 -m http.server</code> — since browsers block local file fetches for security.
 </div>
@@ -890,6 +962,7 @@ const icons = {
 };
 
 let projectsData = [];
+let certData = [];
 
 const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
 
@@ -911,6 +984,7 @@ function renderAll(data){
   renderServices(data.services);
   renderSkills(data.skills);
   renderExperience(data.experience);
+  renderCertifications(data.certifications);
   renderProjects(data.projects);
   renderApps(data.apps);
   renderProcess(data.process);
@@ -1007,6 +1081,39 @@ function renderExperience(exp){
       ${item.tags && item.tags.length ? `<div class="tl-tags">${item.tags.map(t => `<span>${esc(t)}</span>`).join('')}</div>` : ''}
     </div>
   `).join('');
+}
+
+function renderCertifications(certs){
+  certData = (certs && certs.items) || [];
+  // Nothing listed: hide the section rather than throw — an exception here would
+  // stop every section rendered after it.
+  document.getElementById('certifications').hidden = certData.length === 0;
+  if(!certData.length) return;
+  document.getElementById('certificationsHead').innerHTML = secHead(certs.sectionEyebrow, certs.sectionTitle, certs.sectionIntro);
+  document.getElementById('certList').innerHTML = certData.map((c, i) => {
+    const facts = [['Completed', c.date], ['Credential ID', c.credentialId]].filter(f => f[1]);
+    return `
+    <article class="cert-card">
+      <div class="cert-visual">
+        <span class="bracket-corner tl"></span><span class="bracket-corner tr"></span>
+        <span class="bracket-corner bl"></span><span class="bracket-corner br"></span>
+        <button type="button" class="cert-preview" data-idx="${i}">
+          <img src="${esc(c.image)}" alt="${esc(c.imageAlt || c.title + ' certificate')}"${c.imageWidth && c.imageHeight ? ` width="${c.imageWidth}" height="${c.imageHeight}"` : ''} loading="lazy" decoding="async">
+          <span class="cert-hint">View full size <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2H14v4.5M6.5 14H2V9.5M14 2 9.5 6.5M2 14l4.5-4.5"/></svg></span>
+        </button>
+      </div>
+      <div class="cert-body">
+        <div class="cert-issuer">${esc([c.issuer, c.kind].filter(Boolean).join(' · '))}</div>
+        <h3>${esc(c.title)}</h3>
+        ${c.description ? `<p class="cert-desc">${esc(c.description)}</p>` : ''}
+        ${facts.length ? `<dl class="cert-facts">${facts.map(f => `<div class="cert-fact"><dt>${f[0]}</dt><dd>${esc(f[1])}</dd></div>`).join('')}</dl>` : ''}
+        ${c.verifyUrl ? `<a class="btn btn-ghost" href="${esc(c.verifyUrl)}" target="_blank" rel="noopener">${esc(c.verifyLabel || 'Verify credential ↗')}</a>` : ''}
+      </div>
+    </article>`;
+  }).join('');
+  document.querySelectorAll('.cert-preview').forEach(btn => {
+    btn.addEventListener('click', () => openCert(certData[btn.dataset.idx]));
+  });
 }
 
 function renderProjects(proj){
@@ -1135,6 +1242,23 @@ function closeModal(){
 document.getElementById('modalClose').addEventListener('click', closeModal);
 modalOverlay.addEventListener('click', (e) => { if(e.target === modalOverlay) closeModal(); });
 document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal(); });
+
+/* ===================== certificate lightbox ===================== */
+const certLightbox = document.getElementById('certLightbox');
+
+function openCert(c){
+  if(typeof certLightbox.showModal !== 'function'){       // no <dialog> support: open the image itself
+    window.open(c.image, '_blank', 'noopener');
+    return;
+  }
+  const img = document.getElementById('certLightboxImg');
+  img.src = c.image;
+  img.alt = c.imageAlt || `${c.title} certificate`;
+  certLightbox.setAttribute('aria-label', `${c.title} certificate, full size`);
+  certLightbox.showModal();                               // Escape, focus trap and focus return are native
+}
+document.getElementById('certClose').addEventListener('click', () => certLightbox.close());
+certLightbox.addEventListener('click', (e) => { if(e.target === certLightbox) certLightbox.close(); });   // click on the backdrop
 
 /* ============ interactions: reveal-on-scroll, bars, mobile nav ============ */
 function initInteractions(){

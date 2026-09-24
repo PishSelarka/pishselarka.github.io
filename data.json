@@ -303,6 +303,27 @@
       }
     ]
   },
+  "certifications": {
+    "sectionEyebrow": "Certifications",
+    "sectionTitle": "Credentials you can verify",
+    "sectionIntro": "Each one links back to its issuer, so you can check it at the source.",
+    "items": [
+      {
+        "title": "Introduction to Agents",
+        "issuer": "Mercor",
+        "kind": "Certificate of Recognition",
+        "description": "Awarded for completing the course, demonstrating rigor, calibration, and clarity in AI agent evaluation.",
+        "date": "September 24, 2026",
+        "credentialId": "MRC-2026-73U6P5BF",
+        "image": "mercor-certificate-MRC-2026-73U6P5BF_Pish.png",
+        "imageWidth": 1492,
+        "imageHeight": 924,
+        "imageAlt": "Mercor Certificate of Recognition awarded to Piyush Selarka for completing the Introduction to Agents course, dated September 24, 2026",
+        "verifyUrl": "https://work.mercor.com/learn/verify/MRC-2026-73U6P5BF",
+        "verifyLabel": "Verify credential ↗"
+      }
+    ]
+  },
   "projects": {
     "sectionEyebrow": "Selected Projects",
     "sectionTitle": "Products I've owned features on",
