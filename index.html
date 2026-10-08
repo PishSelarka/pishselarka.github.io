@@ -199,7 +199,14 @@
     font-family:var(--font-mono); font-size:12px; color:var(--accent);
     border:1px solid rgba(0,113,227,.22); background:var(--accent-dim);
     box-shadow:var(--sheen);
-    padding:8px 16px; border-radius:var(--r-pill); margin-bottom:26px; letter-spacing:.03em;
+    padding:8px 16px; border-radius:var(--r-pill); letter-spacing:.03em;
+  }
+  /* portrait sits beside the availability pill, so the hero gains a face without extra height */
+  .hero-id{ display:flex; align-items:center; gap:18px; margin-bottom:26px; flex-wrap:wrap; }
+  .avatar{
+    width:104px; height:104px; border-radius:50%; object-fit:cover; flex-shrink:0;
+    border:1px solid var(--border); background:var(--surface);
+    box-shadow:var(--sheen), var(--glow);
   }
   .status-pill .pulse{
     width:6px; height:6px; background:var(--accent); border-radius:50%;
@@ -800,7 +807,10 @@
 <section class="hero" id="home">
   <div class="wrap hero-grid">
     <div>
-      <div class="status-pill"><span class="pulse"></span> <span id="statusText"></span></div>
+      <div class="hero-id">
+        <img class="avatar" id="heroPhoto" width="104" height="104" alt="" hidden>
+        <div class="status-pill"><span class="pulse"></span> <span id="statusText"></span></div>
+      </div>
       <div class="eyebrow" id="heroEyebrow"></div>
       <h1 id="heroHeadline"></h1>
       <p class="hero-lede" id="heroLede"></p>
@@ -1050,7 +1060,7 @@ function renderAll(data){
   document.querySelector('meta[name="description"]').setAttribute('content', data.site.description);
 
   renderNav(data.nav, data.site);
-  renderHero(data.hero);
+  renderHero(data.hero, data.site);
   renderTrack(data.track);
   renderServices(data.services);
   renderSkills(data.skills);
@@ -1073,7 +1083,13 @@ function renderNav(nav, site){
   cta.href = nav.cta.href;
 }
 
-function renderHero(hero){
+function renderHero(hero, site){
+  const photo = document.getElementById('heroPhoto');
+  if(site && site.photo){
+    photo.src = site.photo;
+    photo.alt = site.photoAlt || site.name;
+    photo.hidden = false;
+  }
   document.getElementById('statusText').textContent = hero.status;
   document.getElementById('heroEyebrow').textContent = hero.eyebrow;
   document.getElementById('heroHeadline').innerHTML = `${esc(hero.headlinePre)}<span class="accent">${esc(hero.headlineAccent)}</span>${esc(hero.headlinePost)}`;

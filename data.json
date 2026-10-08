@@ -4,7 +4,9 @@
     "title": "Piyush Selarka — Senior iOS Developer | ARKit & Flutter",
     "description": "Piyush Selarka — Senior iOS Developer with 9+ years across Swift, SwiftUI, ARKit and Flutter, shipping 30+ App Store products.",
     "logo": "PIYUSH&nbsp;SELARKA",
-    "resumeFile": "Piyush_Selarka_Resume.pdf"
+    "resumeFile": "Piyush_Selarka_Resume.pdf",
+    "photo": "piyush-selarka.jpg",
+    "photoAlt": "Piyush Selarka, Senior iOS Developer, Ahmedabad"
   },
   "nav": {
     "links": [
@@ -47,7 +49,7 @@
     }
   },
   "hero": {
-    "status": "AVAILABLE FOR CONTRACT & FULL-TIME · FROM OCT 2026",
+    "status": "AVAILABLE NOW · CONTRACT & FULL-TIME",
     "eyebrow": "Senior iOS Developer · ARKit & Flutter · Taking clients directly",
     "headlinePre": "Piyush Selarka ships the ",
     "headlineAccent": "native iOS layer",
@@ -122,7 +124,7 @@
   "services": {
     "sectionEyebrow": "Services",
     "sectionTitle": "How I can help",
-    "sectionIntro": "Available for contract work from October 2026, and open to senior iOS roles. Nine years of that delivery has been for international clients through an agency — the same work, now direct.",
+    "sectionIntro": "Available now for contract work, and open to senior iOS roles. Nine years of that delivery has been for international clients through an agency — the same work, now direct.",
     "items": [
       {
         "title": "Fixed-Price Projects",
@@ -261,7 +263,7 @@
         "role": "Senior iOS Developer",
         "date": "JUL 2018 — OCT 2026",
         "org": "MindInventory Pvt. Ltd., Ahmedabad",
-        "desc": "Deliver and maintain large-scale iOS applications for international clients across gaming, food delivery, CRM, healthcare and education — integrating payments, wallets, push notifications, analytics, maps and third-party SDKs. Profile and optimise performance with Instruments, run code reviews, mentor junior iOS developers, and ship through Fastlane-driven CI/CD in an Agile/Scrum team. Also delivered two cross-platform Flutter applications alongside the native work, including CollabCRM, a business operating system for IT companies.",
+        "desc": "Delivered and maintained large-scale iOS applications for international clients across gaming, food delivery, CRM, healthcare and education — integrating payments, wallets, push notifications, analytics, maps and third-party SDKs. Profiled and optimised performance with Instruments, ran code reviews, mentored junior iOS developers, and shipped through Fastlane-driven CI/CD in an Agile/Scrum team. Also delivered two cross-platform Flutter applications alongside the native work, including CollabCRM, a business operating system for IT companies.",
         "tags": [
           "Swift & SwiftUI",
           "Objective-C",
@@ -588,7 +590,7 @@
       },
       {
         "q": "When are you available?",
-        "a": "I'm serving notice through October 2026 and open to conversations now for work starting from then — freelance projects, contract engagements, or a full-time role. Based in Ahmedabad, and I work with clients remotely across time zones."
+        "a": "I'm available now — my notice at MindInventory ended on 2 October 2026, so I can start immediately: freelance projects, contract engagements, or a full-time role. Based in Ahmedabad, and I work with clients remotely across time zones."
       },
       {
         "q": "Have you freelanced before?",
@@ -606,7 +608,7 @@
   },
   "contact": {
     "heading": "Let's ship something to the App Store.",
-    "sub": "Available for freelance and contract iOS work from October 2026, and open to senior full-time roles. Native Swift/SwiftUI, ARKit, and Flutter delivery. Based in Ahmedabad, working remotely worldwide.",
+    "sub": "Available now for freelance and contract iOS work, and open to senior full-time roles. Native Swift/SwiftUI, ARKit, and Flutter delivery. Based in Ahmedabad, working remotely worldwide.",
     "chips": [
       {
         "label": "selarka.pish@gmail.com",
