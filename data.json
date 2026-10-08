@@ -118,8 +118,8 @@
         "label": "AVERAGE RATING"
       }
     ],
-    "linkLabel": "",
-    "linkUrl": ""
+    "linkLabel": "View Bhoj on the App Store ↗",
+    "linkUrl": "https://apps.apple.com/app/id1038039473"
   },
   "services": {
     "sectionEyebrow": "Services",
@@ -350,7 +350,25 @@
           "Cross-Platform"
         ],
         "icon": "grid",
-        "video": ""
+        "video": "",
+        "links": [
+          {
+            "label": "Employee app · App Store ↗",
+            "url": "https://apps.apple.com/app/id6739123543"
+          },
+          {
+            "label": "Employee app · Google Play ↗",
+            "url": "https://play.google.com/store/apps/details?id=com.app.collabcrm"
+          },
+          {
+            "label": "Client app · App Store ↗",
+            "url": "https://apps.apple.com/app/id6767129528"
+          },
+          {
+            "label": "Client app · Google Play ↗",
+            "url": "https://play.google.com/store/apps/details?id=com.app.collabclient"
+          }
+        ]
       },
       {
         "id": "spark",
@@ -382,7 +400,17 @@
           "REST APIs"
         ],
         "icon": "bag",
-        "video": ""
+        "video": "",
+        "links": [
+          {
+            "label": "App Store ↗",
+            "url": "https://apps.apple.com/app/id1038039473"
+          },
+          {
+            "label": "Google Play ↗",
+            "url": "https://play.google.com/store/apps/details?id=com.app.bhojdeals"
+          }
+        ]
       },
       {
         "id": "drawnguess",

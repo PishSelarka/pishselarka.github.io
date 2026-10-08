@@ -637,7 +637,9 @@
   .modal-content h3{ font-family:var(--font-display); font-size:25px; margin-bottom:7px; letter-spacing:-.02em; }
   .modal-role{ font-size:13.5px; color:var(--accent-2); margin-bottom:15px; font-weight:500; }
   .modal-content p{ font-size:15.5px; line-height:1.66; color:var(--text-dim); margin-bottom:17px; }
-  .modal-link{ display:inline-block; font-family:var(--font-mono); font-size:12.5px; color:var(--accent-ink); margin-bottom:17px; border-bottom:1px solid transparent; }
+  /* a project can list several stores, so the row wraps instead of running off the box */
+  #modalLinkWrap{ display:flex; flex-wrap:wrap; gap:9px 20px; margin-bottom:17px; }
+  .modal-link{ font-family:var(--font-mono); font-size:12.5px; color:var(--accent-ink); border-bottom:1px solid transparent; }
   .modal-link:hover{ border-color:var(--accent); }
 
   /* ---------- shipped apps ---------- */
@@ -1334,9 +1336,13 @@ function openModal(p){
   document.getElementById('modalTitle').textContent = p.title;
   document.getElementById('modalRole').textContent = p.role;
   document.getElementById('modalDesc').textContent = p.description;
-  document.getElementById('modalLinkWrap').innerHTML = p.link
-    ? `<a class="modal-link" href="${p.link}" target="_blank" rel="noopener">${esc(p.linkLabel || 'View project ↗')}</a>`
-    : '';
+  // a project can carry several stores; `link`/`linkLabel` stays supported for single ones
+  const links = (p.links && p.links.length)
+    ? p.links
+    : (p.link ? [{ label: p.linkLabel || 'View project ↗', url: p.link }] : []);
+  document.getElementById('modalLinkWrap').innerHTML = links
+    .map(l => `<a class="modal-link" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`)
+    .join('');
   document.getElementById('modalTags').innerHTML = p.tags.map(t => `<span>${esc(t)}</span>`).join('');
   modalOverlay.classList.add('open');
   document.getElementById('modalClose').focus();
