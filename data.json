@@ -2,7 +2,7 @@
   "site": {
     "name": "Piyush Selarka",
     "title": "Piyush Selarka — Senior iOS Developer | ARKit & Flutter",
-    "description": "Piyush Selarka — Senior iOS Developer with 8+ years across Swift, SwiftUI, ARKit and Flutter, shipping 30+ App Store products.",
+    "description": "Piyush Selarka — Senior iOS Developer with 9+ years across Swift, SwiftUI, ARKit and Flutter, shipping 30+ App Store products.",
     "logo": "PIYUSH&nbsp;SELARKA",
     "resumeFile": "Piyush_Selarka_Resume.pdf"
   },
@@ -52,7 +52,7 @@
     "headlinePre": "Piyush Selarka ships the ",
     "headlineAccent": "native iOS layer",
     "headlinePost": " that millions of people open every day.",
-    "lede": "<strong>8+ years delivering mobile products for international clients</strong> in Swift, SwiftUI, UIKit and Objective-C — with ARKit and SceneKit for 3D, Flutter for cross-platform delivery, and a Fastlane-driven release pipeline behind <strong>30+ App Store launches</strong>.",
+    "lede": "<strong>9+ years delivering mobile products for international clients</strong> in Swift, SwiftUI, UIKit and Objective-C — with ARKit and SceneKit for 3D, Flutter for cross-platform delivery, and a Fastlane-driven release pipeline behind <strong>30+ App Store launches</strong>.",
     "ctas": [
       {
         "label": "View Projects →",
@@ -69,7 +69,7 @@
     ],
     "stats": [
       {
-        "num": "8+",
+        "num": "9+",
         "label": "Years in iOS"
       },
       {
@@ -122,7 +122,7 @@
   "services": {
     "sectionEyebrow": "Services",
     "sectionTitle": "How I can help",
-    "sectionIntro": "Available for contract work from October 2026, and open to senior iOS roles. Eight years of that delivery has been for international clients through an agency — the same work, now direct.",
+    "sectionIntro": "Available for contract work from October 2026, and open to senior iOS roles. Nine years of that delivery has been for international clients through an agency — the same work, now direct.",
     "items": [
       {
         "title": "Fixed-Price Projects",
@@ -222,7 +222,7 @@
       {
         "name": "Swift · SwiftUI · UIKit",
         "pct": 96,
-        "sub": "8+ years · 30+ shipped App Store products"
+        "sub": "9+ years · 30+ shipped App Store products"
       },
       {
         "name": "iOS Architecture & Performance",
@@ -592,7 +592,7 @@
       },
       {
         "q": "Have you freelanced before?",
-        "a": "Not under my own name — this is my first move to taking clients directly, and I'd rather say so than pretend otherwise. What I do have is eight years of client delivery at MindInventory, an agency, building for international clients to their requirements, deadlines and App Store accounts. The work is the same; the invoice is the only part that changes."
+        "a": "Not under my own name — this is my first move to taking clients directly, and I'd rather say so than pretend otherwise. What I do have is nine years of client delivery at MindInventory, an agency, building for international clients to their requirements, deadlines and App Store accounts. The work is the same; the invoice is the only part that changes."
       },
       {
         "q": "What are your rates?",
