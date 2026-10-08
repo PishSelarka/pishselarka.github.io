@@ -33,6 +33,10 @@
         "href": "#process"
       },
       {
+        "label": "AI Workflow",
+        "href": "#ai-workflow"
+      },
+      {
         "label": "FAQ",
         "href": "#faq"
       }
@@ -647,5 +651,81 @@
         "href": "#projects"
       }
     ]
+  },
+  "aiWorkflow": {
+    "sectionEyebrow": "AI-Assisted Workflow",
+    "sectionTitle": "How I build faster with AI",
+    "sectionIntro": "AI tools take the repetitive half of the work — boilerplate, test scaffolding, stack traces, first-pass refactors. That buys time for the half that decides whether an app is good: architecture, performance, security and review.",
+    "usesTitle": "Where I use it day to day",
+    "uses": [
+      "Convert UIKit code to SwiftUI and speed up modernisation",
+      "Generate repetitive Swift and Flutter boilerplate",
+      "Create unit tests and find the scenarios I've missed",
+      "Debug crashes and read complex stack traces",
+      "Refactor legacy Objective-C, Swift and Flutter codebases",
+      "Understand an unfamiliar codebase faster",
+      "Surface performance optimisation opportunities",
+      "Catch edge cases and likely bugs early",
+      "Draft technical documentation and code comments",
+      "Compare implementation approaches before committing to one"
+    ],
+    "enablesTitle": "What that frees me for",
+    "enables": [
+      {
+        "label": "Software architecture",
+        "icon": "cube"
+      },
+      {
+        "label": "Product thinking",
+        "icon": "target"
+      },
+      {
+        "label": "Performance optimisation",
+        "icon": "timer"
+      },
+      {
+        "label": "Security & reliability",
+        "icon": "shield"
+      },
+      {
+        "label": "Quality assurance",
+        "icon": "check"
+      },
+      {
+        "label": "Code review & standards",
+        "icon": "code"
+      },
+      {
+        "label": "User experience",
+        "icon": "person"
+      },
+      {
+        "label": "Team collaboration",
+        "icon": "team"
+      }
+    ],
+    "toolsTitle": "Tools",
+    "toolGroups": [
+      {
+        "label": "AI",
+        "items": [
+          "ChatGPT",
+          "Claude",
+          "GitHub Copilot",
+          "Gemini",
+          "Cursor"
+        ]
+      },
+      {
+        "label": "Built in",
+        "items": [
+          "Xcode",
+          "Swift",
+          "SwiftUI",
+          "Flutter"
+        ]
+      }
+    ],
+    "note": "<strong>AI drafts, I decide.</strong> Everything it suggests is reviewed, profiled and tested before it reaches a release build — the architecture, the code review and the accountability stay mine."
   }
 }
