@@ -468,25 +468,33 @@
 
   /* ---------- skills ---------- */
   #skills{ background:var(--band); -webkit-backdrop-filter:var(--blur); backdrop-filter:var(--blur); border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft); }
-  .skill-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:48px; }
+  .skill-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:48px; }
   .skill-card{
-    background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg);
+    --tint:rgba(0,113,227,.10);
+    position:relative; padding:24px 24px 26px;
+    background:radial-gradient(130% 120px at 0 0, var(--tint), transparent 70%), var(--surface);
+    border:1px solid var(--border); border-radius:var(--r-lg);
     box-shadow:var(--sheen), var(--card);
-    padding:26px 22px;
     transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
   }
+  .skill-card:nth-child(even){ --tint:rgba(110,63,211,.10); }
+  .skill-card:nth-child(4){ grid-column:span 2; }       /* the longest list takes the wide slot beside the AI card */
   .skill-card:hover{ transform:translateY(-3px); box-shadow:var(--glow); border-color:rgba(0,113,227,.40); }
-  .skill-card h3{
-    font-family:var(--font-display); font-size:17px; font-weight:600; margin-bottom:15px; letter-spacing:-.01em;
-    display:flex; align-items:center; gap:10px;
+  .skill-head{ display:flex; align-items:center; gap:13px; padding-bottom:17px; margin-bottom:17px; border-bottom:1px solid var(--border-soft); }
+  .skill-ico{
+    width:42px; height:42px; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--border); border-radius:var(--r-sm); background:var(--bg-alt); box-shadow:var(--sheen);
   }
-  .skill-card h3 .idx{ font-family:var(--font-mono); font-size:11.5px; font-weight:400; color:var(--accent-2); }
-  .skill-card ul li{
-    font-size:14.5px; color:var(--text-dim); padding:7px 0;
-    border-top:1px solid var(--border-soft); display:flex; align-items:center; gap:9px;
+  .skill-ico svg{ width:21px; height:21px; }
+  .skill-head h3{ font-family:var(--font-display); font-size:17.5px; font-weight:600; line-height:1.25; letter-spacing:-.012em; }
+  .skill-head .idx{ margin-left:auto; align-self:flex-start; font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; color:var(--accent-2); }
+  .skill-chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .skill-chips li{
+    font-family:var(--font-mono); font-size:12.5px; line-height:1.2; color:var(--text-dim);
+    padding:7px 12px; border:1px solid var(--border); border-radius:var(--r-pill); background:rgba(255,255,255,.62);
+    transition:border-color .2s ease, color .2s ease, background .2s ease, transform .2s ease;
   }
-  .skill-card ul li:first-child{ border-top:none; }
-  .skill-card ul li::before{ content:''; width:4px; height:4px; background:var(--accent); border-radius:1px; flex-shrink:0; }
+  .skill-chips li:hover{ border-color:rgba(0,113,227,.5); color:var(--accent-ink); background:#fff; transform:translateY(-1px); }
 
   .expertise{ display:grid; grid-template-columns:1fr 1fr; gap:34px 54px; }
   .bar-item .bar-top{ display:flex; justify-content:space-between; gap:16px; font-size:14.5px; margin-bottom:9px; }
@@ -846,6 +854,7 @@
     to  { opacity:1; transform:translate3d(0,0,0) rotateX(3deg) rotateY(-13deg) scale(1); }
   }
   @keyframes tagIn{ from{ opacity:0; transform:translateY(14px) scale(.85); } }
+  @keyframes chipIn{ from{ opacity:0; transform:translate3d(0,10px,0) scale(.9); } }
   @keyframes bob{ 50%{ translate:0 -7px; } }
   @keyframes ribbon{ to{ transform:translate3d(-50%,0,0); } }
   @keyframes blobIdle{ from{ translate:0 0; rotate:0deg; } to{ translate:1.8% -1.4%; rotate:2deg; } }
@@ -872,6 +881,7 @@
     /* cards land one by one as they come on screen, a few ms apart when several arrive together */
     .rv-pending{ opacity:0; }
     .rv-in{ animation:rise .9s var(--ease) backwards; animation-delay:calc(var(--d, 0) * 1ms); }
+    .rv-in .skill-chips li{ animation:chipIn .6s var(--ease) backwards; animation-delay:calc(var(--d, 0) * 1ms + var(--c, 0) * 28ms + 260ms); }
 
     .ribbon-track{ animation:ribbon 70s linear infinite; }
     .ribbon:hover .ribbon-track{ animation-play-state:paused; }
@@ -910,13 +920,8 @@
   }
 
   /* ---------- responsive ---------- */
-  /* five skill cards: a 3 + 2 split on mid-size screens; below 960px two columns with the last card full width */
-  @media (min-width:961px) and (max-width:1199px){
-    .skill-grid{ grid-template-columns:repeat(6,1fr); }
-    .skill-card{ grid-column:span 2; }
-    .skill-card:nth-child(n+4){ grid-column:span 3; }
-  }
   @media (max-width:960px){
+    .skill-card:nth-child(4){ grid-column:auto; }      /* two columns: the AI card, last, spans both */
     .skill-card:last-child{ grid-column:1 / -1; }
     .hero-grid{ grid-template-columns:1fr; gap:52px; }
     .hero-visual{ order:-1; }
@@ -1209,6 +1214,7 @@ const icons = {
   check: `<svg viewBox="0 0 48 48"><rect class="icon-stroke" x="10" y="9" width="28" height="33" rx="3" stroke-width="2"/><path class="icon-stroke-2" d="M19 9a5 5 0 0 1 10 0" stroke-width="2" stroke-linecap="round"/><path class="icon-stroke-2" d="m17 26 5 5 10-11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
   code: `<svg viewBox="0 0 48 48"><path class="icon-stroke" d="m16 16-9 8 9 8M32 16l9 8-9 8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path class="icon-stroke-2" d="m27 11-6 26" stroke-width="2" stroke-linecap="round"/></svg>`,
   team: `<svg viewBox="0 0 48 48"><circle class="icon-stroke" cx="19" cy="17" r="7" stroke-width="2"/><path class="icon-stroke" d="M7 40c0-7 5.4-11 12-11s12 4 12 11" stroke-width="2" stroke-linecap="round"/><circle class="icon-stroke-2" cx="34" cy="19" r="5" stroke-width="2"/><path class="icon-stroke-2" d="M33 28c5.5.4 9 4 9 8.5" stroke-width="2" stroke-linecap="round"/></svg>`,
+  sparkle: `<svg viewBox="0 0 48 48"><path class="icon-stroke" d="M22 6c1.6 9.4 5.2 13 14 14.6-8.8 1.6-12.4 5.2-14 14.6-1.6-9.4-5.2-13-14-14.6C16.8 19 20.4 15.4 22 6z" stroke-width="2" stroke-linejoin="round"/><path class="icon-stroke-2" d="M37 31c.7 3.8 2.2 5.3 6 6-3.8.7-5.3 2.2-6 6-.7-3.8-2.2-5.3-6-6 3.8-.7 5.3-2.2 6-6z" stroke-width="2" stroke-linejoin="round"/></svg>`,
   tick: `<svg viewBox="0 0 24 24"><path class="icon-stroke" d="m4 12.5 5 5L20 6.5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`
 };
 
@@ -1366,8 +1372,12 @@ function renderSkills(skills){
   document.getElementById('skillsHead').innerHTML = secHead(skills.sectionEyebrow, skills.sectionTitle, skills.sectionIntro);
   document.getElementById('skillGrid').innerHTML = skills.categories.map(c => `
     <div class="skill-card">
-      <h3><span class="idx">${esc(c.idx)}</span> ${esc(c.title)}</h3>
-      <ul>${c.items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>
+      <div class="skill-head">
+        <span class="skill-ico">${icons[c.icon] || icons.cube}</span>
+        <h3>${esc(c.title)}</h3>
+        <span class="idx">${esc(c.idx)}</span>
+      </div>
+      <ul class="skill-chips">${c.items.flatMap(i => i.split(' · ')).map((s, n) => `<li style="--c:${n}">${esc(s)}</li>`).join('')}</ul>
     </div>
   `).join('');
   document.getElementById('expertiseGrid').innerHTML = skills.expertise.map(e => `

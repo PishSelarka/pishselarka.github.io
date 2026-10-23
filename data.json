@@ -200,6 +200,7 @@
       {
         "idx": "01",
         "title": "Languages & UI",
+        "icon": "code",
         "items": [
           "Swift",
           "SwiftUI",
@@ -211,6 +212,7 @@
       {
         "idx": "02",
         "title": "Architecture & Data",
+        "icon": "grid",
         "items": [
           "MVVM · Clean Architecture",
           "Dependency Injection",
@@ -222,6 +224,7 @@
       {
         "idx": "03",
         "title": "AR, ML & Networking",
+        "icon": "cube",
         "items": [
           "ARKit · SceneKit",
           "CoreML · Vision",
@@ -233,6 +236,7 @@
       {
         "idx": "04",
         "title": "Platform, Delivery & Ops",
+        "icon": "pipeline",
         "items": [
           "Firebase · Push Notifications",
           "CocoaPods · Swift Package Manager",
@@ -244,6 +248,7 @@
       {
         "idx": "05",
         "title": "Artificial Intelligence (AI)",
+        "icon": "sparkle",
         "items": [
           "Generative AI",
           "Large Language Models (LLMs)",
