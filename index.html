@@ -48,7 +48,7 @@
     "@type": "CollegeOrUniversity",
     "name": "Saurashtra University"
   },
-  "knowsAbout": ["iOS Development", "Swift", "SwiftUI", "UIKit", "Objective-C",
+  "knowsAbout": ["iOS Development", "Mobile Application Development", "Swift", "SwiftUI", "UIKit", "Objective-C",
                  "ARKit", "SceneKit", "Flutter", "Dart", "CoreML"],
   "sameAs": [
     "https://www.linkedin.com/in/piyush-selarka-007a2312a/",
@@ -468,7 +468,7 @@
 
   /* ---------- skills ---------- */
   #skills{ background:var(--band); -webkit-backdrop-filter:var(--blur); backdrop-filter:var(--blur); border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft); }
-  .skill-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:48px; }
+  .skill-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:48px; }
   .skill-card{
     background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg);
     box-shadow:var(--sheen), var(--card);
@@ -910,7 +910,14 @@
   }
 
   /* ---------- responsive ---------- */
+  /* five skill cards: a 3 + 2 split on mid-size screens; below 960px two columns with the last card full width */
+  @media (min-width:961px) and (max-width:1199px){
+    .skill-grid{ grid-template-columns:repeat(6,1fr); }
+    .skill-card{ grid-column:span 2; }
+    .skill-card:nth-child(n+4){ grid-column:span 3; }
+  }
   @media (max-width:960px){
+    .skill-card:last-child{ grid-column:1 / -1; }
     .hero-grid{ grid-template-columns:1fr; gap:52px; }
     .hero-visual{ order:-1; }
     .hero-visual{ --panel-w:170px; --panel-h:366px; }

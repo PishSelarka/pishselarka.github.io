@@ -203,7 +203,7 @@
         "items": [
           "Swift",
           "SwiftUI",
-          "UIKit",
+          "UIKit · iOS SDK",
           "Objective-C",
           "Flutter & Dart"
         ]
@@ -214,7 +214,7 @@
         "items": [
           "MVVM · Clean Architecture",
           "Dependency Injection",
-          "Swift Concurrency (async/await)",
+          "Swift Concurrency · Combine",
           "CoreData · SQLite",
           "Keychain"
         ]
@@ -239,6 +239,17 @@
           "Fastlane · CI/CD · App Store Connect",
           "XCTest · Instruments profiling",
           "Git · Code review · Agile/Scrum"
+        ]
+      },
+      {
+        "idx": "05",
+        "title": "Artificial Intelligence (AI)",
+        "items": [
+          "Generative AI",
+          "Large Language Models (LLMs)",
+          "Prompt Engineering",
+          "OpenAI API",
+          "AI integration"
         ]
       }
     ],
