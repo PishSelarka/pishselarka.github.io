@@ -131,17 +131,21 @@
 
   /* ---------- ambient background ---------- */
   .bg-glow{
-    position:fixed; inset:0; z-index:0; pointer-events:none;
-    background:
-      /* scrim first (paints on top): guarantees a light ground for text no
-         matter how the blobs below happen to overlap */
-      linear-gradient(rgba(255,255,255,.56), rgba(255,255,255,.56)),
-      radial-gradient(ellipse 68% 52% at 10% 4%,   rgba(0,113,227,.26), transparent 62%),
-      radial-gradient(ellipse 58% 48% at 90% 10%,  rgba(110,63,211,.22), transparent 62%),
-      radial-gradient(ellipse 62% 50% at 78% 72%,  rgba(100,210,255,.28), transparent 60%),
-      radial-gradient(ellipse 55% 45% at 16% 84%,  rgba(255,159,10,.14), transparent 60%),
-      radial-gradient(ellipse 50% 40% at 48% 46%,  rgba(255,45,85,.10), transparent 62%);
+    position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;
   }
+  .bg-glow::before, .bg-glow::after{ content:''; position:absolute; }
+  /* the colour blobs: a little oversized so they can drift, positions converted so they sit exactly where they did */
+  .bg-glow::before{
+    inset:-10% -6%; will-change:transform;
+    background:
+      radial-gradient(ellipse 60.7% 43.3% at 14.3% 11.7%, rgba(0,113,227,.26), transparent 62%),
+      radial-gradient(ellipse 51.8% 40% at 85.7% 16.7%, rgba(110,63,211,.22), transparent 62%),
+      radial-gradient(ellipse 55.4% 41.7% at 75% 68.3%, rgba(100,210,255,.28), transparent 60%),
+      radial-gradient(ellipse 49.1% 37.5% at 19.6% 78.3%, rgba(255,159,10,.14), transparent 60%),
+      radial-gradient(ellipse 44.6% 33.3% at 48.2% 46.7%, rgba(255,45,85,.10), transparent 62%);
+  }
+  /* scrim: paints over the blobs and guarantees a light ground for text no matter how they overlap */
+  .bg-glow::after{ inset:0; background:rgba(255,255,255,.56); }
   /* the grid texture fought the glass — retired */
 
   .bracket-corner{
@@ -756,11 +760,17 @@
   .footer-links a:hover{ color:var(--accent); }
 
   /* ---------- motion ----------
-     Decoration only: entrances and pointer effects sit behind prefers-reduced-motion, and the pointer
-     ones also need a real hover pointer. Entrances use `backwards` fill, so once an animation ends the
-     element falls back to its normal styles and the hover lifts keep working. */
+     Decoration only: entrances, parallax and pointer effects sit behind prefers-reduced-motion, and the
+     pointer ones also need a real hover pointer. Entrances use `backwards` fill, so once an animation
+     ends the element falls back to its normal styles and the hover lifts keep working. Everything that
+     moves is transform or opacity, which keeps it off the main thread. */
+  :root{ --ease:cubic-bezier(.22,1,.36,1); }          /* quick start, long soft landing */
   .sr-only{ position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
   .stat-num{ font-variant-numeric:tabular-nums; }
+
+  /* The big frosted bands blur a background that is already soft, so the blur hardly shows, but the
+     browser recomputes it on every scroll frame. Plain translucency looks the same and scrolls smoother. */
+  #track, #skills, #projects, #process{ -webkit-backdrop-filter:none; backdrop-filter:none; }
 
   .scroll-progress{
     position:fixed; top:0; left:0; right:0; height:3px; z-index:101; pointer-events:none;
@@ -768,12 +778,25 @@
     transform:scaleX(0); transform-origin:0 50%; will-change:transform;
   }
 
+  /* the header tightens and lifts once you leave the top */
+  header{ transition:background .35s ease, box-shadow .35s ease; }
+  nav{ transition:padding .35s var(--ease); }
+  header.scrolled{ background:rgba(255,255,255,.8); box-shadow:0 8px 28px rgba(28,42,84,.09); }
+  header.scrolled nav{ padding-top:14px; padding-bottom:14px; }
   .nav-links a.active{ color:var(--text); }
   .nav-links a.active::after{ width:100%; }
 
+  .hero-grid{ position:relative; z-index:1; }
+  .hero-glow{
+    position:absolute; left:0; top:0; width:560px; height:560px; margin:-280px 0 0 -280px;
+    border-radius:50%; pointer-events:none; z-index:0; opacity:0; transition:opacity .6s ease; will-change:transform;
+    background:radial-gradient(circle, rgba(0,113,227,.17), rgba(110,63,211,.09) 42%, transparent 68%);
+  }
+  .hero-glow.on{ opacity:1; }
   .tilt{ display:flex; flex-shrink:0; transform-style:preserve-3d; will-change:transform; }
 
-  /* a sweep of light crosses the solid buttons on hover */
+  /* buttons: they lean toward the pointer, and a sweep of light crosses the solid ones on hover */
+  .btn, .nav-cta, .track-link{ transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease, translate .35s var(--ease); }
   .btn-primary, .nav-cta{ position:relative; overflow:hidden; isolation:isolate; }
   .btn-primary::after, .nav-cta::after{
     content:''; position:absolute; top:0; bottom:0; left:0; width:55%; z-index:-1; pointer-events:none;
@@ -782,9 +805,29 @@
   }
   .btn-primary:hover::after, .nav-cta:hover::after{ transform:translateX(260%) skewX(-18deg); }
 
-  /* section rules draw in as their heading arrives */
-  .sec-eyebrow::before{ transform-origin:left center; transition:transform .9s cubic-bezier(.2,.8,.2,1) .15s; }
+  /* headings: every word rises out of its own mask; the accent words share one gradient (sized in JS) */
+  .wd{ display:inline-block; overflow:hidden; vertical-align:top; padding:.1em .04em .2em; margin:-.1em -.04em -.2em; }
+  .wd > span{ display:inline-block; }
+  .acc > span{
+    background-image:linear-gradient(120deg, var(--accent) 10%, var(--accent-2) 90%); background-repeat:no-repeat;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .sec-eyebrow::before{ transform-origin:left center; transition:transform .9s var(--ease) .15s; }
   .reveal.pending .sec-eyebrow::before{ transform:scaleX(0); }
+
+  /* ribbon: a slow strip of the stack under the hero */
+  .ribbon{
+    position:relative; z-index:1; overflow:hidden; padding:17px 0;
+    border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft); background:rgba(255,255,255,.4);
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+    mask-image:linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  }
+  .ribbon-track{ display:flex; width:max-content; }
+  .ribbon-track span{
+    display:inline-flex; align-items:center; gap:30px; padding-right:30px; white-space:nowrap;
+    font-family:var(--font-mono); font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-faint);
+  }
+  .ribbon-track span::after{ content:''; width:5px; height:5px; border-radius:1px; background:var(--accent); opacity:.7; transform:rotate(45deg); }
 
   /* the timeline fills as you read down it, and its dots light up */
   .timeline::before{
@@ -796,42 +839,55 @@
   .tl-item.reached::before{ background:var(--accent); box-shadow:0 0 0 5px rgba(0,113,227,.16); transform:scale(1.18); }
   .tl-item.is-education.reached::before{ background:var(--accent-2); box-shadow:0 0 0 5px rgba(110,63,211,.16); }
 
-  @keyframes rise{ from{ opacity:0; transform:translateY(26px) scale(.98); } }
-  @keyframes focusIn{ from{ opacity:0; transform:translateY(30px); filter:blur(12px); } }
+  @keyframes rise{ from{ opacity:0; transform:translate3d(0,34px,0) scale(.97); } }
+  @keyframes wordUp{ from{ transform:translate3d(0,112%,0); } }
   @keyframes deviceIn{
     from{ opacity:0; transform:translate3d(70px,34px,-140px) rotateX(14deg) rotateY(-48deg) scale(.92); }
     to  { opacity:1; transform:translate3d(0,0,0) rotateX(3deg) rotateY(-13deg) scale(1); }
   }
   @keyframes tagIn{ from{ opacity:0; transform:translateY(14px) scale(.85); } }
   @keyframes bob{ 50%{ translate:0 -7px; } }
-  @keyframes flow{ to{ background-position:100% 0; } }
+  @keyframes ribbon{ to{ transform:translate3d(-50%,0,0); } }
+  @keyframes blobIdle{ from{ translate:0 0; rotate:0deg; } to{ translate:1.8% -1.4%; rotate:2deg; } }
 
   @media (prefers-reduced-motion: no-preference){
-    /* hero: each block rises in turn, the headline pulls into focus, the foldable swings in, tags pop */
+    /* hero: blocks rise in turn, the headline words climb out of their masks, the foldable swings in, tags pop */
     .hero-in .hero-grid > div:first-child > :not(.stat-row):not(h1){
-      animation:rise .9s cubic-bezier(.2,.8,.2,1) backwards; animation-delay:calc(var(--n, 0) * 90ms + 60ms);
+      animation:rise .95s var(--ease) backwards; animation-delay:calc(var(--n, 0) * 90ms + 60ms);
     }
-    .hero-in .hero-grid > div:first-child > h1{
-      animation:focusIn 1.15s cubic-bezier(.2,.8,.2,1) backwards; animation-delay:calc(var(--n, 0) * 90ms + 60ms);
-    }
-    .hero-in .stat{ animation:rise .8s cubic-bezier(.2,.8,.2,1) backwards; animation-delay:calc(var(--n, 0) * 80ms + 620ms); }
-    .hero-in .device{ animation:deviceIn 1.5s cubic-bezier(.2,.8,.2,1) .2s backwards; }
+    .hero-in h1 .wd > span{ animation:wordUp 1.1s var(--ease) backwards; animation-delay:calc(var(--w, 0) * 55ms + 160ms); }
+    .hero-in .stat{ animation:rise .9s var(--ease) backwards; animation-delay:calc(var(--n, 0) * 80ms + 640ms); }
+    .hero-in .device{ animation:deviceIn 1.6s var(--ease) .2s backwards; }
     .ft-1{ --n:0; } .ft-2{ --n:1; } .ft-3{ --n:2; }
     .hero-in .float-tag{
-      animation:tagIn .7s cubic-bezier(.2,.8,.2,1) backwards, bob 6s ease-in-out infinite;
-      animation-delay:calc(var(--n, 0) * 140ms + 1.1s), calc(var(--n, 0) * -2s);
-    }
-    /* the accent words drift through their gradient */
-    h1 .accent{
-      background:linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 50%, var(--accent) 100%);
-      background-size:200% 100%; -webkit-background-clip:text; background-clip:text;
-      animation:flow 7s ease-in-out infinite alternate;
+      animation:tagIn .8s var(--ease) backwards, bob 6s ease-in-out infinite;
+      animation-delay:calc(var(--n, 0) * 140ms + 1.2s), calc(var(--n, 0) * -2s);
     }
 
-    /* cards arrive one after another when their grid scrolls into view */
-    .reveal.stagger.pending{ opacity:1; transform:none; }
-    .reveal.stagger.pending > *{ opacity:0; }
-    .reveal.stagger.shown > *{ animation:rise .75s cubic-bezier(.2,.8,.2,1) backwards; animation-delay:calc(var(--i, 0) * 70ms); }
+    /* section titles climb out of their masks as the section arrives; the heading block itself stays put */
+    .wd > span{ transition:transform 1s var(--ease); transition-delay:calc(var(--w, 0) * 50ms); }
+    .reveal.pending .wd > span{ transform:translate3d(0,112%,0); }
+    .sec-head.reveal.pending{ transform:none; }
+
+    /* cards land one by one as they come on screen, a few ms apart when several arrive together */
+    .rv-pending{ opacity:0; }
+    .rv-in{ animation:rise .9s var(--ease) backwards; animation-delay:calc(var(--d, 0) * 1ms); }
+
+    .ribbon-track{ animation:ribbon 70s linear infinite; }
+    .ribbon:hover .ribbon-track{ animation-play-state:paused; }
+    .bg-glow::before{ animation:blobIdle 40s ease-in-out infinite alternate; }
+  }
+
+  /* scroll-linked motion runs as CSS scroll timelines where the browser has them (off the main thread) */
+  @supports (animation-timeline: scroll()){
+    @keyframes grow{ to{ transform:scaleX(1); } }
+    @keyframes heroDrift{ to{ transform:translate3d(0,64px,0) scale(.97); } }
+    @keyframes blobScroll{ to{ transform:translate3d(-2.5%,-8%,0) scale(1.07); } }
+    @media (prefers-reduced-motion: no-preference){
+      .scroll-progress{ animation:grow linear both; animation-timeline:scroll(root); }
+      .hero-visual{ animation:heroDrift linear both; animation-timeline:scroll(root); animation-range:0px 640px; }
+      .bg-glow::before{ animation:blobScroll linear both, blobIdle 40s ease-in-out infinite alternate; animation-timeline:scroll(root), auto; }
+    }
   }
 
   /* a soft light follows the pointer across glass cards */
@@ -906,6 +962,7 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="home">
+  <div class="hero-glow" aria-hidden="true"></div>
   <div class="wrap hero-grid">
     <div>
       <div class="hero-id">
@@ -968,6 +1025,9 @@
   </div>
 </section>
 
+<!-- ============ STACK RIBBON ============ -->
+<div class="ribbon" id="ribbon" aria-hidden="true"><div class="ribbon-track" id="ribbonTrack"></div></div>
+
 <!-- ============ FLAGSHIP BAND ============ -->
 <section id="track">
   <div class="wrap track-row">
@@ -987,7 +1047,7 @@
 <section id="services" class="section-pad">
   <div class="wrap">
     <div class="sec-head reveal" id="servicesHead"></div>
-    <div class="svc-grid reveal" id="svcGrid"></div>
+    <div class="svc-grid" id="svcGrid"></div>
     <div class="svc-note reveal" id="svcNote"></div>
   </div>
 </section>
@@ -996,7 +1056,7 @@
 <section id="skills" class="section-pad">
   <div class="wrap">
     <div class="sec-head reveal" id="skillsHead"></div>
-    <div class="skill-grid reveal" id="skillGrid"></div>
+    <div class="skill-grid" id="skillGrid"></div>
     <div class="expertise reveal" id="expertiseGrid"></div>
     <p class="expertise-note reveal" id="expertiseNote"></p>
   </div>
@@ -1022,7 +1082,7 @@
 <section id="projects" class="section-pad">
   <div class="wrap">
     <div class="sec-head reveal" id="projectsHead"></div>
-    <div class="proj-grid reveal" id="projGrid"></div>
+    <div class="proj-grid" id="projGrid"></div>
     <div class="proj-more-link reveal" id="projMoreLink"></div>
   </div>
 </section>
@@ -1031,7 +1091,7 @@
 <section id="apps" class="section-pad">
   <div class="wrap">
     <div class="sec-head reveal" id="appsHead"></div>
-    <div class="app-grid reveal" id="appGrid"></div>
+    <div class="app-grid" id="appGrid"></div>
     <div class="app-dev-link reveal" id="appDevLink"></div>
   </div>
 </section>
@@ -1040,7 +1100,7 @@
 <section id="process" class="section-pad">
   <div class="wrap">
     <div class="sec-head reveal" id="processHead"></div>
-    <div class="process-list reveal" id="processList"></div>
+    <div class="process-list" id="processList"></div>
   </div>
 </section>
 
@@ -1208,6 +1268,7 @@ function renderAll(data){
 
   renderNav(data.nav, data.site);
   renderHero(data.hero, data.site);
+  renderMarquee(data.marquee);
   renderTrack(data.track);
   renderServices(data.services);
   renderSkills(data.skills);
@@ -1253,6 +1314,12 @@ function renderHero(hero, site){
   document.getElementById('deviceTags').innerHTML = hero.deviceTags.map((t, i) =>
     `<div class="float-tag ft-${i+1}">${esc(t)}</div>`
   ).join('');
+}
+
+function renderMarquee(items){
+  if(!items || !items.length){ document.getElementById('ribbon').remove(); return; }
+  /* the list twice, so the strip can slide by exactly half its width and loop without a seam */
+  document.getElementById('ribbonTrack').innerHTML = [...items, ...items].map(t => `<span>${esc(t)}</span>`).join('');
 }
 
 function renderTrack(track){
@@ -1527,7 +1594,7 @@ function initInteractions(){
   /* Elements already on screen stay visible; only below-the-fold ones animate in. */
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if(e.isIntersecting){ show(e.target); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
+  }, { rootMargin: '0px 0px 10% 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => {
     if(belowFold(el)){ el.classList.add('pending'); io.observe(el); }
@@ -1576,19 +1643,52 @@ function initInteractions(){
 function initMotion(){
   const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const driven = !calm && !!window.CSS && CSS.supports('animation-timeline: scroll()');   // scroll-linked CSS runs off the main thread
+  const root = document.documentElement;
   const all = (sel) => [...document.querySelectorAll(sel)];
+  const once = (fn) => { let queued = false; return () => { if(queued) return; queued = true; requestAnimationFrame(() => { queued = false; fn(); }); }; };
 
-  /* hero: number the entrance steps for the CSS to stagger, then start it */
+  /* hero: number the entrance steps for the CSS to stagger */
   all('.hero-grid > div:first-child > *').forEach((el, i) => el.style.setProperty('--n', i));
   all('#heroStats .stat').forEach((el, i) => el.style.setProperty('--n', i));
+
+  /* headings: every word rises out of its own mask; the accent words keep one continuous gradient */
+  if(!calm){
+    const split = (el) => {
+      let w = 0;
+      const words = (text, cls) => text.split(/\s+/).filter(Boolean).map(word =>
+        `<span class="wd${cls}" aria-hidden="true"><span style="--w:${w++}">${esc(word)}</span></span>`).join(' ');
+      el.setAttribute('aria-label', el.textContent.trim());
+      el.innerHTML = [...el.childNodes].map(n => words(n.textContent, n.nodeType === 1 ? ' acc' : '')).join(' ');
+    };
+    all('h1, .sec-head h2, #contactHeading').forEach(split);
+    const fitAccent = () => {
+      const ws = all('h1 .acc > span');
+      if(!ws.length) return;
+      const space = parseFloat(getComputedStyle(ws[0]).fontSize) * .26;
+      const total = ws.reduce((sum, e) => sum + e.offsetWidth, 0) + space * (ws.length - 1);
+      let left = 0;
+      ws.forEach(e => { e.style.backgroundSize = `${total}px 100%`; e.style.backgroundPosition = `${-left}px 0`; left += e.offsetWidth + space; });
+    };
+    fitAccent();
+    if(document.fonts) document.fonts.ready.then(fitAccent);
+    window.addEventListener('resize', once(fitAccent));
+  }
   document.querySelector('.hero').classList.add('hero-in');
 
-  /* grids whose cards arrive one after another */
-  ['svcGrid', 'skillGrid', 'projGrid', 'appGrid', 'processList'].forEach(id => {
-    const grid = document.getElementById(id);
-    if(!grid) return;
-    grid.classList.add('stagger');
-    [...grid.children].forEach((card, i) => card.style.setProperty('--i', i));
+  /* cards land as they come on screen (a little before, so they are already moving when you see them) */
+  const cardsIo = !calm && new IntersectionObserver((entries) => {
+    entries.filter(e => e.isIntersecting)
+      .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left)
+      .forEach((e, n) => land(e.target, n));
+  }, { rootMargin: '0px 0px 12% 0px' });
+  const land = (el, n) => {
+    el.style.setProperty('--d', Math.min(n, 6) * 70);
+    el.classList.replace('rv-pending', 'rv-in');
+    cardsIo.unobserve(el);
+  };
+  if(cardsIo) all('#svcGrid > *, #skillGrid > *, #projGrid > *, #appGrid > *, #processList > *').forEach(c => {
+    if(c.getBoundingClientRect().top > window.innerHeight * .92){ c.classList.add('rv-pending'); cardsIo.observe(c); }
   });
 
   /* numbers count up the first time they are on screen; the real value stays in the DOM for screen readers */
@@ -1617,21 +1717,18 @@ function initMotion(){
     });
   }
 
-  /* reading progress and the filling timeline, in one scroll handler */
+  /* one scroll handler: header, reading progress, timeline fill, and a safety net for cards the observer missed */
   const bar = document.getElementById('scrollProgress');
+  const header = document.querySelector('header');
   const timeline = document.getElementById('timeline');
-  let queued = false;
-  const onScroll = () => {
-    if(queued) return;
-    queued = true;
-    requestAnimationFrame(() => {
-      queued = false;
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.transform = `scaleX(${max > 0 ? Math.min(1, window.scrollY / max) : 0})`;
-      const r = timeline.getBoundingClientRect();
-      timeline.style.setProperty('--tl-progress', Math.max(0, Math.min(1, (window.innerHeight * .62 - r.top) / r.height)).toFixed(3));
-    });
-  };
+  const onScroll = once(() => {
+    const y = window.scrollY, max = root.scrollHeight - window.innerHeight;
+    header.classList.toggle('scrolled', y > 24);
+    if(!driven) bar.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`;
+    const r = timeline.getBoundingClientRect();
+    timeline.style.setProperty('--tl-progress', Math.max(0, Math.min(1, (window.innerHeight * .62 - r.top) / r.height)).toFixed(3));
+    if(cardsIo) all('.rv-pending').forEach(c => { if(c.getBoundingClientRect().top < window.innerHeight) land(c, 0); });
+  });
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   onScroll();
@@ -1655,18 +1752,34 @@ function initMotion(){
 
   if(!fine || calm) return;
 
-  /* the foldable leans toward the pointer while it is over the hero */
-  const tilt = document.querySelector('.tilt');
+  /* hero: the foldable leans toward the pointer and a soft light trails it */
   const hero = document.querySelector('.hero');
-  let tx = 0, ty = 0, x = 0, y = 0, raf = 0;
+  const tilt = document.querySelector('.tilt');
+  const glow = document.querySelector('.hero-glow');
+  let tx = 0, ty = 0, x = 0, y = 0, gx = 0, gy = 0, px = 0, py = 0, raf = 0;
   const glide = () => {
-    x += (tx - x) * .09; y += (ty - y) * .09;
+    x += (tx - x) * .09; y += (ty - y) * .09; px += (gx - px) * .14; py += (gy - py) * .14;
     tilt.style.transform = `rotateX(${y.toFixed(2)}deg) rotateY(${x.toFixed(2)}deg)`;
-    raf = Math.abs(tx - x) + Math.abs(ty - y) > .02 ? requestAnimationFrame(glide) : 0;
+    glow.style.transform = `translate3d(${px.toFixed(1)}px, ${py.toFixed(1)}px, 0)`;
+    raf = Math.abs(tx - x) + Math.abs(ty - y) + Math.abs(gx - px) + Math.abs(gy - py) > .05 ? requestAnimationFrame(glide) : 0;
   };
-  const aim = (a, b) => { tx = a; ty = b; if(!raf) raf = requestAnimationFrame(glide); };
-  hero.addEventListener('pointermove', (e) => aim((e.clientX / window.innerWidth - .5) * 16, (.5 - e.clientY / window.innerHeight) * 10));
-  hero.addEventListener('pointerleave', () => aim(0, 0));
+  hero.addEventListener('pointermove', (e) => {
+    const r = hero.getBoundingClientRect();
+    tx = (e.clientX / window.innerWidth - .5) * 16; ty = (.5 - e.clientY / window.innerHeight) * 10;
+    gx = e.clientX - r.left; gy = e.clientY - r.top;
+    if(!glow.classList.contains('on')){ px = gx; py = gy; glow.classList.add('on'); }
+    if(!raf) raf = requestAnimationFrame(glide);
+  });
+  hero.addEventListener('pointerleave', () => { tx = ty = 0; glow.classList.remove('on'); if(!raf) raf = requestAnimationFrame(glide); });
+
+  /* buttons lean toward the pointer */
+  all('.btn, .nav-cta, .track-link').forEach(el => {
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.translate = `${((e.clientX - r.left) / r.width - .5) * 10}px ${((e.clientY - r.top) / r.height - .5) * 8}px`;
+    });
+    el.addEventListener('pointerleave', () => { el.style.translate = ''; });
+  });
 
   /* a soft light follows the pointer across glass cards */
   all('.svc-card, .skill-card, .proj-card, .app-tile, .proc-item, .ai-card, .stat, .cert-card').forEach(el => el.classList.add('lit'));

@@ -121,6 +121,28 @@
     "linkLabel": "View Bhoj on the App Store ↗",
     "linkUrl": "https://apps.apple.com/app/id1038039473"
   },
+  "marquee": [
+    "Swift",
+    "SwiftUI",
+    "UIKit",
+    "Objective-C",
+    "ARKit",
+    "SceneKit",
+    "Core ML",
+    "Vision",
+    "Flutter",
+    "Dart",
+    "Swift Concurrency",
+    "Core Data",
+    "MVVM",
+    "Clean Architecture",
+    "XCFrameworks",
+    "Fastlane",
+    "WebSockets",
+    "GraphQL",
+    "Firebase",
+    "App Store Connect"
+  ],
   "services": {
     "sectionEyebrow": "Services",
     "sectionTitle": "How I can help",
