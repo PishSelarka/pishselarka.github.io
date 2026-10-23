@@ -1049,9 +1049,53 @@ let certData = [];
 
 const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
 
+/* ============ keep the scroll position across a refresh ============
+   The page is built from data.json after it loads, so the browser's own restore runs against a
+   nearly empty page and lands at the top. Remember the position and put it back once the content exists. */
+const SCROLL_KEY = 'scrollY:' + location.pathname;
+
+function jumpTo(y){
+  const root = document.documentElement;
+  root.style.scrollBehavior = 'auto';     // html{ scroll-behavior:smooth } would animate the jump
+  window.scrollTo(0, y);
+  root.style.scrollBehavior = '';
+}
+
+function restoreScroll(){
+  let y = 0;
+  try { y = parseFloat(sessionStorage.getItem(SCROLL_KEY)) || 0; } catch(e){}
+  const nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+  const returning = nav && (nav.type === 'reload' || nav.type === 'back_forward');   // a fresh visit starts at the top
+  let restoredY = null;
+
+  if(returning && y > 0){
+    restoredY = y;
+    jumpTo(y);
+    /* Fonts and images settle after the first paint and shift the layout, so re-apply until the visitor scrolls. */
+    let moved = false;
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(t =>
+      window.addEventListener(t, () => { moved = true; }, { once: true, passive: true }));
+    const settle = () => { if(!moved && Math.abs(window.scrollY - y) > 1) jumpTo(y); };
+    if(document.fonts) document.fonts.ready.then(settle);
+    if(document.readyState === 'complete') settle(); else window.addEventListener('load', settle);
+  }
+
+  const save = () => {
+    /* Still on the restored spot: a sub-pixel layout nudge must not be stored, or the position creeps on every refresh. */
+    if(restoredY !== null && Math.abs(window.scrollY - restoredY) < 1) return;
+    try { sessionStorage.setItem(SCROLL_KEY, String(window.scrollY)); } catch(e){}
+  };
+  save();                                 // a fresh visit overwrites whatever an earlier visit left behind
+  let queued = false;
+  window.addEventListener('scroll', () => {
+    if(!queued){ queued = true; requestAnimationFrame(() => { queued = false; save(); }); }
+  }, { passive: true });
+  window.addEventListener('pagehide', save);
+}
+
 fetch('data.json')
   .then(r => { if(!r.ok) throw new Error('fetch failed'); return r.json(); })
-  .then(data => { renderAll(data); initInteractions(); })
+  .then(data => { renderAll(data); restoreScroll(); initInteractions(); })
   .catch(err => {
     console.error('Failed to load data.json', err);
     document.getElementById('loadError').style.display = 'block';
