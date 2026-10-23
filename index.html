@@ -478,7 +478,6 @@
     transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
   }
   .skill-card:nth-child(even){ --tint:rgba(110,63,211,.10); }
-  .skill-card:nth-child(4){ grid-column:span 2; }       /* the longest list takes the wide slot beside the AI card */
   .skill-card:hover{ transform:translateY(-3px); box-shadow:var(--glow); border-color:rgba(0,113,227,.40); }
   .skill-head{ display:flex; align-items:center; gap:13px; padding-bottom:17px; margin-bottom:17px; border-bottom:1px solid var(--border-soft); }
   .skill-ico{
@@ -488,7 +487,13 @@
   .skill-ico svg{ width:21px; height:21px; }
   .skill-head h3{ font-family:var(--font-display); font-size:17.5px; font-weight:600; line-height:1.25; letter-spacing:-.012em; }
   .skill-head .idx{ margin-left:auto; align-self:flex-start; font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; color:var(--accent-2); }
-  .skill-chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .skill-chips{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+  /* equal-height cards: the footer sits on the bottom edge, so a short list ends tidily instead of trailing off */
+  .skill-card{ display:flex; flex-direction:column; }
+  .skill-foot{
+    margin-top:auto; padding-top:13px; border-top:1px solid var(--border-soft);
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-faint);
+  }
   .skill-chips li{
     font-family:var(--font-mono); font-size:12.5px; line-height:1.2; color:var(--text-dim);
     padding:7px 12px; border:1px solid var(--border); border-radius:var(--r-pill); background:rgba(255,255,255,.62);
@@ -921,8 +926,6 @@
 
   /* ---------- responsive ---------- */
   @media (max-width:960px){
-    .skill-card:nth-child(4){ grid-column:auto; }      /* two columns: the AI card, last, spans both */
-    .skill-card:last-child{ grid-column:1 / -1; }
     .hero-grid{ grid-template-columns:1fr; gap:52px; }
     .hero-visual{ order:-1; }
     .hero-visual{ --panel-w:170px; --panel-h:366px; }
@@ -1215,6 +1218,7 @@ const icons = {
   code: `<svg viewBox="0 0 48 48"><path class="icon-stroke" d="m16 16-9 8 9 8M32 16l9 8-9 8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path class="icon-stroke-2" d="m27 11-6 26" stroke-width="2" stroke-linecap="round"/></svg>`,
   team: `<svg viewBox="0 0 48 48"><circle class="icon-stroke" cx="19" cy="17" r="7" stroke-width="2"/><path class="icon-stroke" d="M7 40c0-7 5.4-11 12-11s12 4 12 11" stroke-width="2" stroke-linecap="round"/><circle class="icon-stroke-2" cx="34" cy="19" r="5" stroke-width="2"/><path class="icon-stroke-2" d="M33 28c5.5.4 9 4 9 8.5" stroke-width="2" stroke-linecap="round"/></svg>`,
   sparkle: `<svg viewBox="0 0 48 48"><path class="icon-stroke" d="M22 6c1.6 9.4 5.2 13 14 14.6-8.8 1.6-12.4 5.2-14 14.6-1.6-9.4-5.2-13-14-14.6C16.8 19 20.4 15.4 22 6z" stroke-width="2" stroke-linejoin="round"/><path class="icon-stroke-2" d="M37 31c.7 3.8 2.2 5.3 6 6-3.8.7-5.3 2.2-6 6-.7-3.8-2.2-5.3-6-6 3.8-.7 5.3-2.2 6-6z" stroke-width="2" stroke-linejoin="round"/></svg>`,
+  cloud: `<svg viewBox="0 0 48 48"><path class="icon-stroke" d="M14 35h21a8 8 0 0 0 1.6-15.84A11 11 0 0 0 15.4 17.4 9 9 0 0 0 14 35z" stroke-width="2" stroke-linejoin="round"/><path class="icon-stroke-2" d="M24 31v-9m-4 4 4-4 4 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
   tick: `<svg viewBox="0 0 24 24"><path class="icon-stroke" d="m4 12.5 5 5L20 6.5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`
 };
 
@@ -1370,16 +1374,19 @@ function renderServices(svc){
 
 function renderSkills(skills){
   document.getElementById('skillsHead').innerHTML = secHead(skills.sectionEyebrow, skills.sectionTitle, skills.sectionIntro);
-  document.getElementById('skillGrid').innerHTML = skills.categories.map(c => `
+  document.getElementById('skillGrid').innerHTML = skills.categories.map(c => {
+    const chips = c.items.flatMap(i => i.split(' · '));
+    return `
     <div class="skill-card">
       <div class="skill-head">
         <span class="skill-ico">${icons[c.icon] || icons.cube}</span>
         <h3>${esc(c.title)}</h3>
         <span class="idx">${esc(c.idx)}</span>
       </div>
-      <ul class="skill-chips">${c.items.flatMap(i => i.split(' · ')).map((s, n) => `<li style="--c:${n}">${esc(s)}</li>`).join('')}</ul>
-    </div>
-  `).join('');
+      <ul class="skill-chips">${chips.map((s, n) => `<li style="--c:${n}">${esc(s)}</li>`).join('')}</ul>
+      <div class="skill-foot">${chips.length} skills</div>
+    </div>`;
+  }).join('');
   document.getElementById('expertiseGrid').innerHTML = skills.expertise.map(e => `
     <div class="bar-item">
       <div class="bar-top"><span class="bname">${esc(e.name)}</span><span class="bpct">${e.pct}%</span></div>

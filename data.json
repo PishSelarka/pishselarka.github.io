@@ -215,6 +215,7 @@
         "icon": "grid",
         "items": [
           "MVVM · Clean Architecture",
+          "The Composable Architecture (TCA)",
           "Dependency Injection",
           "Swift Concurrency · Combine",
           "CoreData · SQLite",
@@ -226,11 +227,12 @@
         "title": "AR, ML & Networking",
         "icon": "cube",
         "items": [
-          "ARKit · SceneKit",
+          "ARKit · SceneKit · RealityKit",
           "CoreML · Vision",
           "MapKit",
           "REST APIs & GraphQL",
-          "URLSession · Alamofire"
+          "URLSession · Alamofire",
+          "JSON · API error handling"
         ]
       },
       {
@@ -240,9 +242,10 @@
         "items": [
           "Firebase · Push Notifications",
           "CocoaPods · Swift Package Manager",
-          "Fastlane · CI/CD · App Store Connect",
+          "Fastlane · CI/CD · App Store Connect · Google Play Console",
           "XCTest · Instruments profiling",
-          "Git · Code review · Agile/Scrum"
+          "Git · Code review · Agile/Scrum",
+          "Cross-functional collaboration · Production support"
         ]
       },
       {
@@ -253,8 +256,28 @@
           "Generative AI",
           "Large Language Models (LLMs)",
           "Prompt Engineering",
-          "OpenAI API",
-          "AI integration"
+          "OpenAI API · Google Gemini API",
+          "AI integration",
+          "Image recognition · Object detection",
+          ".mlmodel integration",
+          "AI-powered mobile features"
+        ]
+      },
+      {
+        "idx": "06",
+        "title": "Cloud & Integrations",
+        "icon": "cloud",
+        "items": [
+          "Cloud Firestore",
+          "AWS",
+          "Cloud integration",
+          "Authentication",
+          "Social login",
+          "Deep linking",
+          "Universal links",
+          "Third-party SDKs",
+          "Payment gateways",
+          "Analytics"
         ]
       }
     ],
