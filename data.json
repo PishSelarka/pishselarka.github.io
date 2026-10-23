@@ -771,6 +771,10 @@
         "label": "Built in",
         "items": [
           "Xcode",
+          "Android Studio",
+          "Postman",
+          "Figma",
+          "Fastlane",
           "Swift",
           "SwiftUI",
           "Flutter"
