@@ -260,6 +260,19 @@
     "sectionIntro": "From junior developer to senior iOS engineer leading releases and mentoring the bench, across gaming, food delivery, healthcare, CRM and education.",
     "items": [
       {
+        "role": "Freelance Senior iOS & Flutter Developer",
+        "date": "OCT 2026 — PRESENT",
+        "org": "Krida Bytes",
+        "desc": "Building the NewsKida iOS app in Swift and SwiftUI — news feeds, search, read-aloud, localization and video reels, including reel playback, pagination, bug fixes and testing on simulators and devices.",
+        "tags": [
+          "Swift & SwiftUI",
+          "Video reels",
+          "Localization",
+          "Freelance"
+        ],
+        "type": "work"
+      },
+      {
         "role": "Senior iOS Developer",
         "date": "JUL 2018 — OCT 2026",
         "org": "MindInventory Pvt. Ltd., Ahmedabad",
@@ -300,8 +313,16 @@
         "type": "work"
       },
       {
+        "role": "Master of Computer Applications (MCA), pursued",
+        "date": "JUL 2014 — MAY 2015",
+        "org": "G H Patel P G Department of Computer Science and Technology",
+        "desc": "",
+        "tags": [],
+        "type": "education"
+      },
+      {
         "role": "Bachelor of Computer Applications (BCA)",
-        "date": "GRADUATED",
+        "date": "APR 2011 — APR 2014",
         "org": "Saurashtra University",
         "desc": "",
         "tags": [],
@@ -457,7 +478,7 @@
           "Open Source"
         ],
         "icon": "cube",
-        "link": "https://github.com/PishSelarka/MIARKitExamples",
+        "link": "https://github.com/Mindinventory/MIARKitExamples",
         "linkLabel": "View on GitHub ↗",
         "video": ""
       },
@@ -474,7 +495,7 @@
           "Product AR"
         ],
         "icon": "target",
-        "link": "https://github.com/PishSelarka/ARCarRims",
+        "link": "https://github.com/Mindinventory/ARCarRims",
         "linkLabel": "View on GitHub ↗",
         "video": ""
       }
@@ -602,7 +623,7 @@
       },
       {
         "q": "Do you build augmented reality?",
-        "a": "Yes — ARKit and SceneKit for 3D visualisation and product AR, plus CoreML and Vision for on-device intelligence. I maintain two open-source AR projects: MIARKitExamples, a set of ARKit/SceneKit reference samples, and ARCarRims, a 3D car-rim visualiser."
+        "a": "Yes — ARKit and SceneKit for 3D visualisation and product AR, plus CoreML and Vision for on-device intelligence. I built two open-source AR projects at MindInventory: MIARKitExamples, a set of ARKit/SceneKit reference samples, and ARCarRims, a 3D car-rim visualiser."
       },
       {
         "q": "Can you deliver cross-platform, or native only?",
@@ -622,7 +643,7 @@
       },
       {
         "q": "Have you freelanced before?",
-        "a": "Not under my own name — this is my first move to taking clients directly, and I'd rather say so than pretend otherwise. What I do have is nine years of client delivery at MindInventory, an agency, building for international clients to their requirements, deadlines and App Store accounts. The work is the same; the invoice is the only part that changes."
+        "a": "Yes, recently. Since October 2026 I've been freelancing with Krida Bytes on their NewsKida iOS app. Before that, nine years of client delivery at MindInventory, an agency, building for international clients to their requirements, deadlines and App Store accounts. The work is the same; the invoice is the only part that changes."
       },
       {
         "q": "What are your rates?",
@@ -656,7 +677,7 @@
       },
       {
         "label": "LinkedIn ↗",
-        "href": "https://www.linkedin.com/in/%EF%A3%BFpiyush-selarka-007a2312a/"
+        "href": "https://www.linkedin.com/in/piyush-selarka-007a2312a/"
       },
       {
         "label": "GitHub ↗",
