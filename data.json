@@ -3,10 +3,7 @@
     "name": "Piyush Selarka",
     "title": "Piyush Selarka — Senior iOS Developer | ARKit & Flutter",
     "description": "Piyush Selarka — Senior iOS Developer with 9+ years across Swift, SwiftUI, ARKit and Flutter, shipping 30+ App Store products.",
-    "logo": "PIYUSH&nbsp;SELARKA",
-    "resumeFile": "Piyush_Selarka_Resume.pdf",
-    "photo": "piyush-selarka.jpg",
-    "photoAlt": "Piyush Selarka, Senior iOS Developer, Ahmedabad"
+    "logo": "PIYUSH&nbsp;SELARKA"
   },
   "nav": {
     "links": [
@@ -92,9 +89,26 @@
       "SCENEKIT",
       "FLUTTER"
     ],
-    "sessionLabel": "ARKIT",
-    "sessionId": "/ SESSION_01",
-    "sessionStatus": "TRACKING NORMAL · 60 FPS"
+    "screens": {
+      "inner": {
+        "video": "hero-spread.mp4",
+        "poster": "hero-spread.jpg"
+      },
+      "outer": {
+        "poster": "hero-outer.jpg",
+        "video": "hero-outer.mp4"
+      },
+      "contact": {
+        "inner": {
+          "video": "hero-projects.mp4",
+          "poster": "hero-projects.jpg"
+        },
+        "outer": {
+          "video": "hero-projects-outer.mp4",
+          "poster": "hero-projects-outer.jpg"
+        }
+      }
+    }
   },
   "track": {
     "badge": "FLAGSHIP",
@@ -141,7 +155,39 @@
     "WebSockets",
     "GraphQL",
     "Firebase",
-    "App Store Connect"
+    "App Store Connect",
+    "Xcode",
+    "Instruments",
+    "TestFlight",
+    "XCTest",
+    "XCUITest",
+    "CI/CD",
+    "GitHub Actions",
+    "Google Play Console",
+    "Android Studio",
+    "RealityKit",
+    "TensorFlow Lite",
+    "OpenAI APIs",
+    "Google Gemini APIs",
+    "LLM Integration",
+    "TCA",
+    "SwiftData",
+    "VIPER",
+    "SQLite",
+    "Cloud Firestore",
+    "URLSession",
+    "Alamofire",
+    "CocoaPods",
+    "SPM",
+    "Keychain",
+    "OAuth 2.0",
+    "JWT",
+    "StoreKit",
+    "In-App Purchases",
+    "Apple Pay",
+    "Push Notifications",
+    "Deep Linking",
+    "Crashlytics"
   ],
   "services": {
     "sectionEyebrow": "Services",
@@ -199,85 +245,240 @@
     "categories": [
       {
         "idx": "01",
-        "title": "Languages & UI",
+        "title": "iOS & Apple Development",
         "icon": "code",
         "items": [
           "Swift",
           "SwiftUI",
-          "UIKit · iOS SDK",
+          "UIKit",
           "Objective-C",
-          "Flutter & Dart"
+          "iOS SDK",
+          "iOS Development",
+          "iPhone App Development",
+          "iPad App Development",
+          "Apple Ecosystem",
+          "SwiftData",
+          "Core Data",
+          "SQLite",
+          "MVC",
+          "MVVM",
+          "VIPER",
+          "The Composable Architecture (TCA)"
         ]
       },
       {
         "idx": "02",
-        "title": "Architecture & Data",
-        "icon": "grid",
+        "title": "Flutter & Cross-Platform Development",
+        "icon": "cube",
         "items": [
-          "MVVM · Clean Architecture",
-          "The Composable Architecture (TCA)",
-          "Dependency Injection",
-          "Swift Concurrency · Combine",
-          "CoreData · SQLite",
-          "Keychain"
+          "Flutter",
+          "Dart",
+          "Cross-Platform App Development",
+          "Android Studio",
+          "Google Play Console"
         ]
       },
       {
         "idx": "03",
-        "title": "AR, ML & Networking",
-        "icon": "cube",
+        "title": "Software Architecture & Design",
+        "icon": "grid",
         "items": [
-          "ARKit · SceneKit · RealityKit",
-          "CoreML · Vision",
-          "MapKit",
-          "REST APIs & GraphQL",
-          "URLSession · Alamofire",
-          "JSON · API error handling"
+          "Clean Architecture",
+          "SOLID Principles",
+          "Design Patterns",
+          "Repository Pattern",
+          "Dependency Injection",
+          "Modular Architecture",
+          "Object-Oriented Programming (OOP)",
+          "Protocol-Oriented Programming",
+          "Strategic Architecture"
         ]
       },
       {
         "idx": "04",
-        "title": "Platform, Delivery & Ops",
-        "icon": "pipeline",
+        "title": "API, Networking & Backend Integration",
+        "icon": "cloud",
         "items": [
-          "Firebase · Push Notifications",
-          "CocoaPods · Swift Package Manager",
-          "Fastlane · CI/CD · App Store Connect · Google Play Console",
-          "XCTest · Instruments profiling",
-          "Git · Code review · Agile/Scrum",
-          "Cross-functional collaboration · Production support"
+          "REST APIs",
+          "GraphQL",
+          "JSON",
+          "URLSession",
+          "Alamofire",
+          "WebSockets",
+          "Asynchronous Networking",
+          "Caching",
+          "Firebase",
+          "Cloud Firestore",
+          "API Integration",
+          "API error handling",
+          "OAuth 2.0",
+          "JWT Authentication",
+          "AWS",
+          "Cloud integration",
+          "Social login"
         ]
       },
       {
         "idx": "05",
-        "title": "Artificial Intelligence (AI)",
+        "title": "AI, Machine Learning & LLM",
         "icon": "sparkle",
         "items": [
+          "OpenAI APIs",
+          "Google Gemini APIs",
+          "AI-Powered Mobile Features",
+          "AI Chatbot Integration",
+          "LLM Integration",
+          "AI Integration",
           "Generative AI",
           "Large Language Models (LLMs)",
           "Prompt Engineering",
-          "OpenAI API · Google Gemini API",
-          "AI integration",
-          "Image recognition · Object detection",
+          "Core ML",
+          "Core ML Model Integration",
           ".mlmodel integration",
-          "AI-powered mobile features"
+          "TensorFlow Lite",
+          "ML Model Inference",
+          "Image Classification"
         ]
       },
       {
         "idx": "06",
-        "title": "Cloud & Integrations",
-        "icon": "cloud",
+        "title": "Computer Vision & Augmented Reality",
+        "icon": "target",
         "items": [
-          "Cloud Firestore",
-          "AWS",
-          "Cloud integration",
+          "ARKit",
+          "SceneKit",
+          "RealityKit",
+          "Vision Framework",
+          "Image Recognition",
+          "Object Detection",
+          "Image Processing"
+        ]
+      },
+      {
+        "idx": "07",
+        "title": "Apple Frameworks & Device Features",
+        "icon": "brief",
+        "items": [
+          "MapKit",
+          "Core Location",
+          "Bluetooth Low Energy (BLE)",
+          "Push Notifications",
+          "Deep Linking",
+          "Universal Links",
+          "AVFoundation",
+          "Camera Integration",
+          "Background Tasks"
+        ]
+      },
+      {
+        "idx": "08",
+        "title": "Storage & Security",
+        "icon": "shield",
+        "items": [
+          "Keychain",
+          "Data Encryption",
+          "Secure Storage",
+          "Local Data Persistence"
+        ]
+      },
+      {
+        "idx": "09",
+        "title": "Development Tools & Version Control",
+        "icon": "brush",
+        "items": [
+          "Xcode",
+          "Git",
+          "GitHub",
+          "Swift Package Manager (SPM)",
+          "CocoaPods",
+          "Postman",
+          "Figma"
+        ]
+      },
+      {
+        "idx": "10",
+        "title": "CI/CD & Deployment",
+        "icon": "pipeline",
+        "items": [
+          "Fastlane",
+          "CI/CD",
+          "GitHub Actions",
+          "App Store Connect",
+          "TestFlight",
+          "App Store Releases",
+          "Automated Build & Release"
+        ]
+      },
+      {
+        "idx": "11",
+        "title": "Testing & Quality Assurance",
+        "icon": "check",
+        "items": [
+          "XCTest",
+          "XCUITest",
+          "Unit Testing",
+          "UI Testing",
+          "Code Coverage",
+          "API Testing",
+          "Debugging",
+          "Code Reviews"
+        ]
+      },
+      {
+        "idx": "12",
+        "title": "Performance Optimization & Memory Management",
+        "icon": "timer",
+        "items": [
+          "Xcode Instruments",
+          "Instruments Profiling",
+          "Memory Management",
+          "Memory Leak Detection",
+          "Crash Analysis",
+          "Crashlytics",
+          "Performance Optimization",
+          "Bug Fixing",
+          "Legacy Code Modernization"
+        ]
+      },
+      {
+        "idx": "13",
+        "title": "Payments & Third-Party Integrations",
+        "icon": "bag",
+        "items": [
+          "Third-Party SDK Integration",
+          "Payment Gateway Integration",
+          "Apple Pay",
+          "StoreKit",
+          "In-App Purchases",
           "Authentication",
-          "Social login",
-          "Deep linking",
-          "Universal links",
-          "Third-party SDKs",
-          "Payment gateways",
           "Analytics"
+        ]
+      },
+      {
+        "idx": "14",
+        "title": "Concurrency & Modern Programming",
+        "icon": "wheel",
+        "items": [
+          "Swift Concurrency",
+          "async/await",
+          "Grand Central Dispatch (GCD)",
+          "Combine",
+          "Multithreading",
+          "Thread Safety"
+        ]
+      },
+      {
+        "idx": "15",
+        "title": "Development Methodologies & Collaboration",
+        "icon": "team",
+        "items": [
+          "Agile",
+          "Scrum",
+          "Technical Documentation",
+          "Stakeholder Communication",
+          "Cross-Functional Collaboration",
+          "Production Support",
+          "Application Maintenance"
         ]
       }
     ],
