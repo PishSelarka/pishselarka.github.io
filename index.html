@@ -453,14 +453,14 @@
   #certifications{ padding-top:0; }
   .cert-list{ display:flex; flex-direction:column; gap:20px; }
   .cert-card{
-    display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); overflow:hidden;
+    display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1fr); overflow:hidden;
     background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg);
     box-shadow:var(--sheen), var(--card);
   }
   .cert-card:hover .bracket-corner{ width:24px; height:24px; opacity:1; }
   .cert-visual{
     position:relative; display:flex; align-items:center; justify-content:center;
-    padding:38px 36px; border-right:1px solid var(--border);
+    padding:30px 28px; border-right:1px solid var(--border);
     background:radial-gradient(ellipse 70% 70% at 50% 50%, rgba(76,194,255,.05), transparent 70%);
   }
   .cert-preview{
@@ -469,7 +469,7 @@
   }
   /* drop-shadow (not box-shadow) so it follows the PNG's rounded, transparent corners */
   .cert-preview img{
-    width:100%; height:auto; filter:drop-shadow(0 10px 22px rgba(0,0,0,.36));
+    width:100%; max-width:340px; height:auto; filter:drop-shadow(0 10px 22px rgba(0,0,0,.36));
     transition:transform .3s ease, filter .3s ease;
   }
   .cert-preview:hover img{ transform:translateY(-3px); filter:drop-shadow(0 16px 30px rgba(0,0,0,.42)); }

@@ -610,6 +610,20 @@
         "imageAlt": "Mercor Certificate of Recognition awarded to Piyush Selarka for completing the Introduction to Agents course, dated September 24, 2026",
         "verifyUrl": "https://work.mercor.com/learn/verify/MRC-2026-73U6P5BF",
         "verifyLabel": "Verify credential ↗"
+      },
+      {
+        "title": "Mastering Model Mechanics",
+        "issuer": "Mercor",
+        "kind": "Certificate of Recognition",
+        "description": "Awarded for completing the course, demonstrating rigor, calibration, and clarity in AI agent evaluation.",
+        "date": "October 28, 2026",
+        "credentialId": "MRC-2026-2MN2MSTK",
+        "image": "mercor-certificate-MRC-2026-2MN2MSTK_Pish.png",
+        "imageWidth": 1492,
+        "imageHeight": 924,
+        "imageAlt": "Mercor Certificate of Recognition awarded to Piyush Selarka for completing the Mastering Model Mechanics course, dated October 28, 2026",
+        "verifyUrl": "https://work.mercor.com/learn/verify/MRC-2026-2MN2MSTK",
+        "verifyLabel": "Verify credential ↗"
       }
     ]
   },
